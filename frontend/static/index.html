@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kandamma Kids Wear — AI Shopping Concierge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
+<style>
+  :root {
+    --primary: #1e293b;
+    --primary-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+    --accent: #e11d48;
+    --accent-gold: #d4af37;
+    --accent-hover: #be123c;
+    --bg-main: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.04);
+    --shadow-md: 0 10px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.04);
+    --radius-lg: 16px;
+    --radius-md: 12px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-main);
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* --- Navbar Header --- */
+  header {
+    background: var(--primary-gradient);
+    color: #fff;
+    padding: 1.1rem 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    z-index: 10;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .brand-logo {
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, #fb7185, #e11d48);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(225,29,72,0.4);
+  }
+  .brand-title {
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    background: linear-gradient(to right, #ffffff, #fecdd3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .brand-subtitle {
+    font-size: 0.78rem;
+    color: #cbd5e1;
+    font-weight: 500;
+  }
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(8px);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #10b981;
+  }
+
+  /* --- Quick Action Toolbar --- */
+  .quick-bar {
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    gap: 0.6rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: thin;
+  }
+  .chip {
+    background: #f1f5f9;
+    color: #334155;
+    border: 1px solid var(--border);
+    padding: 0.45rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .chip:hover {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(225,29,72,0.25);
+  }
+
+  /* --- Chat Main Window --- */
+  #log {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .msg {
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .msg.user { align-items: flex-end; }
+  .msg.agent { align-items: flex-start; }
+
+  .sender-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 0.3rem;
+    padding: 0 0.4rem;
+  }
+
+  .bubble {
+    display: inline-block;
+    padding: 0.9rem 1.2rem;
+    border-radius: var(--radius-lg);
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    line-height: 1.55;
+    font-size: 0.98rem;
+    max-width: 85%;
+    box-shadow: var(--shadow-sm);
+    word-break: break-word;
+  }
+  .msg.user .bubble {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-bottom-right-radius: 4px;
+    box-shadow: 0 4px 14px rgba(225,29,72,0.3);
+  }
+  .msg.agent .bubble {
+    border-bottom-left-radius: 4px;
+  }
+
+  .bubble.rich {
+    background: transparent;
+    border: none;
+    padding: 0;
+    max-width: 100%;
+    box-shadow: none;
+    width: 100%;
+  }
+
+  /* --- Input Area --- */
+  .input-container {
+    background: #fff;
+    border-top: 1px solid var(--border);
+    padding: 1rem 1.5rem;
+  }
+  form {
+    display: flex;
+    gap: 0.75rem;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+  }
+  input {
+    flex: 1;
+    padding: 0.95rem 1.2rem;
+    border: 1.5px solid var(--border);
+    border-radius: 28px;
+    font-size: 1rem;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.2s ease;
+    background: #f8fafc;
+  }
+  input:focus {
+    border-color: var(--accent);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(225,29,72,0.1);
+  }
+  button {
+    padding: 0.95rem 1.8rem;
+    border: none;
+    border-radius: 28px;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    box-shadow: 0 4px 14px rgba(225,29,72,0.35);
+  }
+  button:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(225,29,72,0.45);
+  }
+
+  /* --- A2UI Card Custom Styling --- */
+  .a2card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.3rem;
+    background: #fff;
+    box-shadow: var(--shadow-md);
+    max-width: 100%;
+    transition: transform 0.2s ease;
+  }
+  .a2card + .a2card, .a2col > .a2card { margin-top: 0.8rem; }
+  .a2col { display: flex; flex-direction: column; gap: 0.6rem; }
+  .a2row { display: flex; flex-direction: row; gap: 0.8rem; align-items: center; flex-wrap: wrap; }
+  .a2row.between { justify-content: space-between; }
+  .a2text { margin: 0; line-height: 1.5; color: var(--text-main); }
+  .a2text.a2-h1 { font-size: 1.5rem; font-weight: 800; color: #0f172a; }
+  .a2text.a2-h2 { font-size: 1.25rem; font-weight: 700; color: #1e293b; }
+  .a2text.a2-h3 { font-size: 1.1rem; font-weight: 600; color: #334155; }
+  .a2text.a2-h4 { font-size: 1rem; font-weight: 600; }
+  .a2text.a2-caption { font-size: 0.85rem; color: var(--text-muted); }
+  .a2divider { border: none; border-top: 1px solid var(--border); margin: 0.6rem 0; width: 100%; }
+  .a2img { max-width: 100%; border-radius: var(--radius-md); display: block; box-shadow: var(--shadow-sm); }
+  .material-symbols-outlined { font-family: 'Material Symbols Outlined'; font-size: 1.3rem; line-height: 1; vertical-align: middle; color: var(--accent); }
+
+  /* Interactive Links inside bubbles */
+  a.action-btn {
+    display: inline-block;
+    background: #25d366;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.88rem;
+    margin-top: 0.5rem;
+    box-shadow: 0 4px 10px rgba(37,211,102,0.3);
+    transition: all 0.2s ease;
+  }
+  a.action-btn:hover { background: #128c7e; transform: translateY(-1px); }
+  a.pay-btn {
+    display: inline-block;
+    background: #6366f1;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.88rem;
+    margin-top: 0.5rem;
+    box-shadow: 0 4px 10px rgba(99,102,241,0.3);
+    transition: all 0.2s ease;
+  }
+  a.pay-btn:hover { background: #4f46e5; transform: translateY(-1px); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="brand-logo">K</div>
+    <div>
+      <div class="brand-title">KANDAMMA KIDS WEAR</div>
+      <div class="brand-subtitle">Luxury Apparel & Fashion Concierge</div>
+    </div>
+  </div>
+  <div class="status-badge">
+    <div class="status-dot"></div>
+    <span>AI Concierge Active</span>
+  </div>
+</header>
+
+<div class="quick-bar">
+  <button type="button" class="chip" onclick="sendQuick('Show me all luxury ethnic kids outfits')">✨ Festive Ethnic Wear</button>
+  <button type="button" class="chip" onclick="sendQuick('Show me kids clothing items for Girls')">👗 Girls Collection</button>
+  <button type="button" class="chip" onclick="sendQuick('Show me kids clothing items for Boys')">👔 Boys Collection</button>
+  <button type="button" class="chip" onclick="sendQuick('Generate a visual preview of a Royal Silk Kids Sherwani outfit')">🎨 AI Outfit Generator</button>
+  <button type="button" class="chip" onclick="sendQuick('I want to order KKW-101 in size 4Y for customer Priya (+919876543210)')">📲 Order via WhatsApp</button>
+  <button type="button" class="chip" onclick="sendQuick('Check status of order ORD-1001')">📦 Order Tracker</button>
+  <button type="button" class="chip" onclick="sendQuick('Admin: Add a new product KKW-107 Velvet Royal Anarkali Set in category Girls for $85.00')">⚡ Admin CRUD</button>
+</div>
+
+<div id="log">
+  <div class="msg agent">
+    <div class="sender-label">Kandamma AI Concierge</div>
+    <div class="bubble">
+      Welcome to <strong>KANDAMMA KIDS WEAR</strong>! 👑<br><br>
+      I am your personal AI fashion assistant. I can help you:
+      <ul>
+        <li>Explore our premium kids clothing catalog (Lehengas, Kurta Pyjamas, Tuxedos, Toddler Sets).</li>
+        <li>Generate custom AI outfit visual previews for your child.</li>
+        <li>Place direct orders with instant <strong>WhatsApp Admin Checkout</strong> & <strong>Secured Payment Links</strong>.</li>
+        <li>Manage inventory for store admins.</li>
+      </ul>
+      How may I assist you today?
+    </div>
+  </div>
+</div>
+
+<div class="input-container">
+  <form id="form">
+    <input id="input" placeholder="Ask about outfits, sizes, WhatsApp ordering, or AI visuals..." autocomplete="off" autofocus>
+    <button type="submit">
+      <span>Send</span>
+      <span class="material-symbols-outlined" style="color:#fff; font-size:1.1rem;">send</span>
+    </button>
+  </form>
+</div>
+
+<script>
+const log = document.getElementById("log");
+const form = document.getElementById("form");
+const input = document.getElementById("input");
+
+function el(tag, cls, text) { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+
+function bubble(who) {
+  const m = el("div", "msg " + who);
+  const label = el("div", "sender-label", who === "user" ? "You" : "Kandamma AI Concierge");
+  m.appendChild(label);
+  const b = el("div", "bubble");
+  m.appendChild(b); log.appendChild(m); log.scrollTop = log.scrollHeight;
+  return b;
+}
+
+function sendQuick(txt) {
+  input.value = txt;
+  form.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
+}
+
+/* --- A2UI Component Renderer --- */
+function boundStr(v) {
+  if (v == null) return "";
+  if (typeof v === "string") return v;
+  if (typeof v.literalString === "string") return v.literalString;
+  return "";
+}
+
+function childIds(props) {
+  const ids = [];
+  if (props && typeof props.child === "string") ids.push(props.child);
+  const ch = props && props.children;
+  if (ch && Array.isArray(ch.explicitList)) for (const c of ch.explicitList) if (typeof c === "string") ids.push(c);
+  return ids;
+}
+
+function iconName(n) { return String(n || "").replace(/([a-z0-9])([A-Z])/g, "$1_$2").replace(/\s+/g, "_").toLowerCase(); }
+
+function buildNode(id, comps, seen) {
+  if (!id || seen.has(id)) return null;
+  seen.add(id);
+  const spec = comps[id];
+  if (!spec || typeof spec !== "object") return null;
+  const type = Object.keys(spec)[0];
+  const props = spec[type] || {};
+  const kids = () => childIds(props).map(cid => buildNode(cid, comps, seen)).filter(Boolean);
+
+  switch (type) {
+    case "Card": {
+      const d = el("div", "a2card"); kids().forEach(n => d.appendChild(n)); return d;
+    }
+    case "Column":
+    case "List": {
+      const horizontal = type === "List" && props.direction === "horizontal";
+      const d = el("div", horizontal ? "a2row" : "a2col"); kids().forEach(n => d.appendChild(n)); return d;
+    }
+    case "Row": {
+      const d = el("div", "a2row" + (props.distribution === "spaceBetween" ? " between" : ""));
+      kids().forEach(n => d.appendChild(n)); return d;
+    }
+    case "Text": {
+      const t = el("div", "a2text");
+      const hint = String(props.usageHint || "body").toLowerCase();
+      if (["h1", "h2", "h3", "h4", "h5", "h6"].includes(hint)) t.classList.add("a2-" + hint);
+      else if (hint === "caption") t.classList.add("a2-caption");
+      t.textContent = boundStr(props.text);
+      return t;
+    }
+    case "Divider":
+      return el("hr", "a2divider");
+    case "Image": {
+      const src = boundStr(props.url || props.src);
+      if (!/^https?:\/\//i.test(src)) return null;
+      const img = el("img", "a2img"); img.src = src; img.alt = boundStr(props.alt) || ""; return img;
+    }
+    case "Icon": {
+      const s = el("span", "material-symbols-outlined"); s.textContent = iconName(boundStr(props.name) || props.name); return s;
+    }
+    default:
+      return null;
+  }
+}
+
+function renderSurface(messages, container) {
+  const comps = {};
+  const roots = [];
+  for (const m of messages) {
+    if (m.beginRendering && typeof m.beginRendering.root === "string") roots.push(m.beginRendering.root);
+    const su = m.surfaceUpdate;
+    if (su && Array.isArray(su.components)) for (const c of su.components) if (c && c.id && c.component) comps[c.id] = c.component;
+  }
+  let rootIds = roots.filter(r => comps[r]);
+  if (rootIds.length === 0) {
+    const referenced = new Set();
+    for (const id in comps) { const spec = comps[id]; childIds(spec[Object.keys(spec)[0]] || {}).forEach(c => referenced.add(c)); }
+    rootIds = Object.keys(comps).filter(id => !referenced.has(id));
+  }
+  let drew = false;
+  for (const rid of rootIds) { const node = buildNode(rid, comps, new Set()); if (node) { container.appendChild(node); drew = true; } }
+  return drew;
+}
+
+function flattenText(messages) {
+  const out = [];
+  for (const m of messages) {
+    const su = m.surfaceUpdate;
+    if (su && Array.isArray(su.components)) for (const c of su.components) if (c && c.component && c.component.Text) out.push(boundStr(c.component.Text.text));
+  }
+  return out.join("\n").trim();
+}
+
+function formatRichText(txt) {
+  if (!txt) return "";
+  // Check for WhatsApp links
+  txt = txt.replace(/(https:\/\/wa\.me\/[^\s]+)/g, '<a href="$1" target="_blank" class="action-btn">📲 Open WhatsApp Admin Order</a>');
+  // Check for Payment links
+  txt = txt.replace(/(https:\/\/checkout\.kandammakidswear\.com\/[^\s]+)/g, '<a href="$1" target="_blank" class="pay-btn">💳 Proceed to Secured Checkout</a>');
+  // Check for image links
+  txt = txt.replace(/(https:\/\/storage\.googleapis\.com\/[^\s]+\.(jpg|jpeg|png))/gi, '<div style="margin-top:8px"><img src="$1" class="a2img" style="max-height:300px; object-fit:cover;"></div>');
+  return txt.replace(/\n/g, "<br>");
+}
+
+function renderReply(b, parts) {
+  b.textContent = "";
+  const texts = parts.filter(p => p && (p.kind === "text" || (!p.kind && p.text))).map(p => p.text || "");
+  const a2ui = parts.filter(p => p && p.kind === "a2ui" && p.data).map(p => p.data);
+
+  const textStr = texts.join("\n").trim();
+  if (textStr) {
+    const textEl = el("div");
+    textEl.innerHTML = formatRichText(textStr);
+    b.appendChild(textEl);
+  }
+
+  if (a2ui.length) {
+    b.classList.add("rich");
+    if (!renderSurface(a2ui, b)) {
+      const fallbackEl = el("div");
+      fallbackEl.innerHTML = formatRichText(flattenText(a2ui) || "(no card content)");
+      b.appendChild(fallbackEl);
+    }
+  }
+  if (!b.childNodes.length) b.textContent = "(no response)";
+  log.scrollTop = log.scrollHeight;
+}
+
+form.addEventListener("submit", async (ev) => {
+  ev.preventDefault();
+  const text = input.value.trim();
+  if (!text) return;
+  bubble("user").textContent = text;
+  input.value = "";
+  const b = bubble("agent"); b.textContent = "Processing luxury concierge response...";
+  try {
+    const res = await fetch("/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ message: text }) });
+    const raw = await res.text();
+    let data;
+    try { data = JSON.parse(raw); }
+    catch { throw new Error(`Server returned non-JSON (HTTP ${res.status}). ${raw.slice(0, 300)}`); }
+    renderReply(b, data.parts || []);
+  } catch (e) {
+    b.textContent = "Error: " + e.message;
+  }
+});
+</script>
+</body>
+</html>
