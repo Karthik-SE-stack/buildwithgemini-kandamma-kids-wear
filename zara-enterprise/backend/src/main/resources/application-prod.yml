@@ -1,0 +1,62 @@
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/zara_db}
+    username: ${SPRING_DATASOURCE_USERNAME:zara_admin}
+    password: ${SPRING_DATASOURCE_PASSWORD:SecureZaraPass2026!}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      idle-timeout: 300000
+      connection-timeout: 20000
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: false
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    locations: classpath:db/migration
+
+  data:
+    redis:
+      host: ${SPRING_DATA_REDIS_HOST:localhost}
+      port: ${SPRING_DATA_REDIS_PORT:6379}
+      password: ${SPRING_DATA_REDIS_PASSWORD:SecureRedisPass2026!}
+      timeout: 2000ms
+
+jwt:
+  expiration-ms: 900000 # 15 minutes
+  refresh-expiration-ms: 604800000 # 7 days
+  secret: ${JWT_SECRET_KEY:EnterpriseZaraSecretKeyRS256SignedProductionToken2026!}
+
+stripe:
+  secret-key: ${STRIPE_SECRET_KEY:sk_test_mock_zara_key}
+  webhook-secret: ${STRIPE_WEBHOOK_SECRET:whsec_mock_zara_secret}
+
+security:
+  encryption:
+    secret-key: ${PII_ENCRYPTION_KEY:ZaraAES256GCMSecretKeyProtection2026!}
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  metrics:
+    export:
+      prometheus:
+        enabled: true

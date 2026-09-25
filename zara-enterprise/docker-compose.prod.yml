@@ -1,0 +1,86 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: zara-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: zara_db
+      POSTGRES_USER: zara_admin
+      POSTGRES_PASSWORD: SecureZaraPass2026!
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_prod_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U zara_admin -d zara_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: zara-redis
+    restart: always
+    command: redis-server --requirepass SecureRedisPass2026!
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_prod_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "SecureRedisPass2026!", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: zara-backend
+    restart: always
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/zara_db
+      SPRING_DATASOURCE_USERNAME: zara_admin
+      SPRING_DATASOURCE_PASSWORD: SecureZaraPass2026!
+      SPRING_DATA_REDIS_HOST: redis
+      SPRING_DATA_REDIS_PORT: 6379
+      SPRING_DATA_REDIS_PASSWORD: SecureRedisPass2026!
+      JWT_SECRET_KEY: RS256_PRIVATE_KEY_PLACEHOLDER_ENTERPRISE_SECURE_KEY_2026
+      STRIPE_SECRET_KEY: sk_test_zara_production_key_mock_2026
+      STRIPE_WEBHOOK_SECRET: whsec_zara_webhook_secret_mock_2026
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: zara-frontend
+    restart: always
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: http://backend:8080/api/v1
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: zara-prometheus
+    restart: always
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+
+volumes:
+  postgres_prod_data:
+  redis_prod_data:

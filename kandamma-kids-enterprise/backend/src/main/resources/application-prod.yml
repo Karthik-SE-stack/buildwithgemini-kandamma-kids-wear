@@ -1,0 +1,56 @@
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/kandamma_db}
+    username: ${SPRING_DATASOURCE_USERNAME:kandamma_admin}
+    password: ${SPRING_DATASOURCE_PASSWORD:SecureKandammaPass2026!}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      idle-timeout: 300000
+      connection-timeout: 20000
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    locations: classpath:db/migration
+
+  data:
+    redis:
+      host: ${SPRING_DATA_REDIS_HOST:localhost}
+      port: ${SPRING_DATA_REDIS_PORT:6379}
+      password: ${SPRING_DATA_REDIS_PASSWORD:SecureKandammaRedis2026!}
+      timeout: 2000ms
+
+jwt:
+  expiration-ms: 900000 # 15 min
+  refresh-expiration-ms: 604800000 # 7 days
+  secret: ${JWT_SECRET_KEY:EnterpriseKandammaKidsRS256SignedSecretProduction2026!}
+
+stripe:
+  secret-key: ${STRIPE_SECRET_KEY:sk_test_kandamma_mock}
+  webhook-secret: ${STRIPE_WEBHOOK_SECRET:whsec_kandamma_mock}
+
+razorpay:
+  key-id: ${RAZORPAY_KEY_ID:rzp_test_kandamma_mock}
+  key-secret: ${RAZORPAY_KEY_SECRET:rzp_test_secret_mock}
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus

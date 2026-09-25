@@ -1,0 +1,78 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: kandamma-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: kandamma_db
+      POSTGRES_USER: kandamma_admin
+      POSTGRES_PASSWORD: SecureKandammaPass2026!
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_kandamma_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kandamma_admin -d kandamma_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: kandamma-redis
+    restart: always
+    command: redis-server --requirepass SecureKandammaRedis2026!
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_kandamma_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "SecureKandammaRedis2026!", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: kandamma-backend
+    restart: always
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/kandamma_db
+      SPRING_DATASOURCE_USERNAME: kandamma_admin
+      SPRING_DATASOURCE_PASSWORD: SecureKandammaPass2026!
+      SPRING_DATA_REDIS_HOST: redis
+      SPRING_DATA_REDIS_PORT: 6379
+      SPRING_DATA_REDIS_PASSWORD: SecureKandammaRedis2026!
+      JWT_SECRET_KEY: RS256_PRIVATE_KEY_KANDAMMA_KIDS_SECURE_KEY_2026
+      STRIPE_SECRET_KEY: sk_test_kandamma_kids_production_mock
+      RAZORPAY_KEY_ID: rzp_test_kandamma_key_id
+      RAZORPAY_KEY_SECRET: rzp_test_kandamma_key_secret
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: kandamma-frontend
+    restart: always
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: http://backend:8080/api/v1
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_kandamma_data:
+  redis_kandamma_data:

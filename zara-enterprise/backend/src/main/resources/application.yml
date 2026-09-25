@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: zara-backend
+  profiles:
+    active: prod
+
+server:
+  port: 8080
+  servlet:
+    context-path: /

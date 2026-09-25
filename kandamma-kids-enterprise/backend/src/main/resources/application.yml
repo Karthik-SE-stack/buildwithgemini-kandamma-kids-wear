@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: kandamma-backend
+  profiles:
+    active: prod
+
+server:
+  port: 8080
