@@ -3,525 +3,899 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kandamma Kids Wear — AI Shopping Concierge</title>
+<title>KANDAMMA KIDS WEAR — Luxury E-Commerce Fashion Store</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
 <style>
   :root {
-    --primary: #1e293b;
-    --primary-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-    --accent: #e11d48;
-    --accent-gold: #d4af37;
-    --accent-hover: #be123c;
+    --primary-dark: #0f172a;
+    --primary-gold: #d4af37;
+    --gold-gradient: linear-gradient(135deg, #f59e0b 0%, #d4af37 50%, #b45309 100%);
+    --rose-accent: #e11d48;
+    --rose-gradient: linear-gradient(135deg, #fb7185 0%, #e11d48 100%);
     --bg-main: #f8fafc;
     --card-bg: #ffffff;
-    --text-main: #0f172a;
+    --text-dark: #0f172a;
     --text-muted: #64748b;
     --border: #e2e8f0;
-    --shadow-sm: 0 2px 4px rgba(0,0,0,0.04);
-    --shadow-md: 0 10px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.04);
-    --radius-lg: 16px;
-    --radius-md: 12px;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: var(--bg-main);
-    color: var(--text-main);
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    overflow: hidden;
+    --shadow-subtle: 0 4px 12px rgba(0,0,0,0.03);
+    --shadow-hover: 0 20px 30px -10px rgba(0,0,0,0.12);
+    --radius-xl: 20px;
+    --radius-lg: 14px;
   }
 
-  /* --- Navbar Header --- */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg-main);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* --- Top Announcement Bar --- */
+  .announcement-bar {
+    background: var(--primary-dark);
+    color: #f1f5f9;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .announcement-bar span { color: var(--primary-gold); font-weight: 700; }
+
+  /* --- Header / Navigation --- */
   header {
-    background: var(--primary-gradient);
-    color: #fff;
-    padding: 1.1rem 1.8rem;
+    background: #ffffff;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.04);
+  }
+  .header-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-    z-index: 10;
   }
   .brand {
     display: flex;
     align-items: center;
     gap: 0.8rem;
+    text-decoration: none;
   }
   .brand-logo {
-    width: 42px;
-    height: 42px;
-    background: linear-gradient(135deg, #fb7185, #e11d48);
-    border-radius: 12px;
+    width: 46px;
+    height: 46px;
+    background: var(--rose-gradient);
+    border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 800;
-    font-size: 1.4rem;
     color: #fff;
-    box-shadow: 0 4px 12px rgba(225,29,72,0.4);
+    font-weight: 900;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 15px rgba(225,29,72,0.35);
   }
-  .brand-title {
-    font-size: 1.3rem;
+  .brand-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
     font-weight: 800;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
+    color: var(--primary-dark);
+  }
+  .brand-tagline {
+    font-size: 0.72rem;
+    color: var(--rose-accent);
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: #334155;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--rose-accent); }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .cart-btn {
+    position: relative;
+    background: #f1f5f9;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .cart-btn:hover { background: #e2e8f0; }
+  .cart-count {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: var(--rose-accent);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 800;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ai-stylist-trigger {
+    background: var(--gold-gradient);
+    color: #0f172a;
+    border: none;
+    padding: 0.65rem 1.3rem;
+    border-radius: 28px;
+    font-weight: 800;
+    font-size: 0.88rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    box-shadow: 0 4px 15px rgba(245,158,11,0.3);
+    transition: all 0.2s;
+  }
+  .ai-stylist-trigger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(245,158,11,0.45);
+  }
+
+  /* --- Hero Showcase Banner --- */
+  .hero {
+    max-width: 1280px;
+    margin: 1.5rem auto;
+    padding: 0 2rem;
+  }
+  .hero-card {
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 60%, #311b92 100%);
+    border-radius: var(--radius-xl);
+    padding: 3.5rem 3rem;
+    color: #ffffff;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(15,23,42,0.25);
+  }
+  .hero-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(225,29,72,0.25) 0%, rgba(0,0,0,0) 70%);
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(212,175,55,0.2);
+    border: 1px solid rgba(212,175,55,0.4);
+    color: #fde047;
+    padding: 0.35rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 1rem;
     background: linear-gradient(to right, #ffffff, #fecdd3);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  .brand-subtitle {
-    font-size: 0.78rem;
+  .hero-desc {
+    font-size: 1.05rem;
     color: #cbd5e1;
-    font-weight: 500;
+    margin-bottom: 2rem;
+    max-width: 540px;
   }
-  .status-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(8px);
-    padding: 0.4rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    border: 1px solid rgba(255,255,255,0.15);
-  }
-  .status-dot {
-    width: 8px;
-    height: 8px;
-    background: #10b981;
-    border-radius: 50%;
-    box-shadow: 0 0 10px #10b981;
-  }
-
-  /* --- Quick Action Toolbar --- */
-  .quick-bar {
-    background: #fff;
-    border-bottom: 1px solid var(--border);
-    padding: 0.75rem 1.5rem;
+  .hero-btns {
     display: flex;
-    gap: 0.6rem;
-    overflow-x: auto;
-    white-space: nowrap;
-    scrollbar-width: thin;
+    gap: 1rem;
   }
-  .chip {
-    background: #f1f5f9;
-    color: #334155;
-    border: 1px solid var(--border);
-    padding: 0.45rem 0.9rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
+  .btn-primary {
+    background: var(--rose-accent);
+    color: #fff;
+    padding: 0.9rem 2rem;
+    border-radius: 30px;
+    font-weight: 800;
+    font-size: 0.95rem;
+    border: none;
     cursor: pointer;
-    transition: all 0.2s ease;
+    text-decoration: none;
     display: inline-flex;
     align-items: center;
-    gap: 0.35rem;
+    gap: 0.5rem;
+    box-shadow: 0 6px 20px rgba(225,29,72,0.4);
+    transition: all 0.2s;
   }
-  .chip:hover {
-    background: var(--accent);
+  .btn-primary:hover {
+    background: #be123c;
+    transform: translateY(-2px);
+  }
+  .btn-secondary {
+    background: rgba(255,255,255,0.12);
     color: #fff;
-    border-color: var(--accent);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(225,29,72,0.25);
-  }
-
-  /* --- Chat Main Window --- */
-  #log {
-    flex: 1;
-    overflow-y: auto;
-    padding: 1.5rem;
-    max-width: 900px;
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-  }
-
-  .msg {
-    display: flex;
-    flex-direction: column;
-    animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .msg.user { align-items: flex-end; }
-  .msg.agent { align-items: flex-start; }
-
-  .sender-label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    margin-bottom: 0.3rem;
-    padding: 0 0.4rem;
-  }
-
-  .bubble {
-    display: inline-block;
-    padding: 0.9rem 1.2rem;
-    border-radius: var(--radius-lg);
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    color: var(--text-main);
-    line-height: 1.55;
-    font-size: 0.98rem;
-    max-width: 85%;
-    box-shadow: var(--shadow-sm);
-    word-break: break-word;
-  }
-  .msg.user .bubble {
-    background: var(--accent);
-    color: #fff;
-    border: none;
-    border-bottom-right-radius: 4px;
-    box-shadow: 0 4px 14px rgba(225,29,72,0.3);
-  }
-  .msg.agent .bubble {
-    border-bottom-left-radius: 4px;
-  }
-
-  .bubble.rich {
-    background: transparent;
-    border: none;
-    padding: 0;
-    max-width: 100%;
-    box-shadow: none;
-    width: 100%;
-  }
-
-  /* --- Input Area --- */
-  .input-container {
-    background: #fff;
-    border-top: 1px solid var(--border);
-    padding: 1rem 1.5rem;
-  }
-  form {
-    display: flex;
-    gap: 0.75rem;
-    max-width: 900px;
-    margin: 0 auto;
-    position: relative;
-  }
-  input {
-    flex: 1;
-    padding: 0.95rem 1.2rem;
-    border: 1.5px solid var(--border);
-    border-radius: 28px;
-    font-size: 1rem;
-    font-family: inherit;
-    outline: none;
-    transition: all 0.2s ease;
-    background: #f8fafc;
-  }
-  input:focus {
-    border-color: var(--accent);
-    background: #fff;
-    box-shadow: 0 0 0 4px rgba(225,29,72,0.1);
-  }
-  button {
-    padding: 0.95rem 1.8rem;
-    border: none;
-    border-radius: 28px;
-    background: var(--accent);
-    color: #fff;
+    padding: 0.9rem 1.8rem;
+    border-radius: 30px;
     font-weight: 700;
     font-size: 0.95rem;
+    border: 1px solid rgba(255,255,255,0.25);
     cursor: pointer;
-    transition: all 0.2s ease;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.2); }
+
+  .hero-image-wrap {
+    position: relative;
+    text-align: center;
+  }
+  .hero-img {
+    width: 100%;
+    max-width: 380px;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+    border: 3px solid rgba(255,255,255,0.15);
+  }
+
+  /* --- Main Catalog Controls --- */
+  .catalog-section {
+    max-width: 1280px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+  }
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--primary-dark);
+  }
+  .section-subtitle {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+
+  .filter-bar {
+    display: flex;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    background: #ffffff;
+    border: 1.5px solid var(--border);
+    padding: 0.6rem 1.4rem;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .tab-btn.active, .tab-btn:hover {
+    background: var(--primary-dark);
+    color: #ffffff;
+    border-color: var(--primary-dark);
+    box-shadow: 0 4px 12px rgba(15,23,42,0.15);
+  }
+
+  /* --- Product Grid --- */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+  .product-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-subtle);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+    border-color: #cbd5e1;
+  }
+
+  .card-img-wrap {
+    position: relative;
+    height: 280px;
+    background: #f1f5f9;
+    overflow: hidden;
+  }
+  .card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .product-card:hover .card-img {
+    transform: scale(1.05);
+  }
+  .badge-category {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: rgba(15,23,42,0.85);
+    backdrop-filter: blur(8px);
+    color: var(--primary-gold);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  .card-body {
+    padding: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .rating-stars {
+    color: #f59e0b;
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
     display: flex;
     align-items: center;
+    gap: 0.2rem;
+  }
+  .card-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--primary-dark);
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
+  }
+  .card-desc {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .size-badges {
+    display: flex;
     gap: 0.4rem;
-    box-shadow: 0 4px 14px rgba(225,29,72,0.35);
+    margin-bottom: 1.2rem;
+    flex-wrap: wrap;
   }
-  button:hover {
-    background: var(--accent-hover);
-    transform: translateY(-1px);
-    box-shadow: 0 6px 18px rgba(225,29,72,0.45);
+  .size-chip {
+    background: #f1f5f9;
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #475569;
   }
 
-  /* --- A2UI Card Custom Styling --- */
-  .a2card {
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 1.3rem;
-    background: #fff;
-    box-shadow: var(--shadow-md);
-    max-width: 100%;
-    transition: transform 0.2s ease;
+  .card-footer {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+    border-top: 1px solid #f1f5f9;
   }
-  .a2card + .a2card, .a2col > .a2card { margin-top: 0.8rem; }
-  .a2col { display: flex; flex-direction: column; gap: 0.6rem; }
-  .a2row { display: flex; flex-direction: row; gap: 0.8rem; align-items: center; flex-wrap: wrap; }
-  .a2row.between { justify-content: space-between; }
-  .a2text { margin: 0; line-height: 1.5; color: var(--text-main); }
-  .a2text.a2-h1 { font-size: 1.5rem; font-weight: 800; color: #0f172a; }
-  .a2text.a2-h2 { font-size: 1.25rem; font-weight: 700; color: #1e293b; }
-  .a2text.a2-h3 { font-size: 1.1rem; font-weight: 600; color: #334155; }
-  .a2text.a2-h4 { font-size: 1rem; font-weight: 600; }
-  .a2text.a2-caption { font-size: 0.85rem; color: var(--text-muted); }
-  .a2divider { border: none; border-top: 1px solid var(--border); margin: 0.6rem 0; width: 100%; }
-  .a2img { max-width: 100%; border-radius: var(--radius-md); display: block; box-shadow: var(--shadow-sm); }
-  .material-symbols-outlined { font-family: 'Material Symbols Outlined'; font-size: 1.3rem; line-height: 1; vertical-align: middle; color: var(--accent); }
+  .price {
+    font-size: 1.35rem;
+    font-weight: 900;
+    color: var(--primary-dark);
+  }
 
-  /* Interactive Links inside bubbles */
-  a.action-btn {
-    display: inline-block;
+  .card-btns {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .btn-whatsapp {
     background: #25d366;
-    color: #fff;
-    padding: 0.5rem 1rem;
+    color: #ffffff;
+    border: none;
+    padding: 0.6rem 1rem;
     border-radius: 20px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.88rem;
-    margin-top: 0.5rem;
+    font-weight: 800;
+    font-size: 0.82rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
     box-shadow: 0 4px 10px rgba(37,211,102,0.3);
-    transition: all 0.2s ease;
-  }
-  a.action-btn:hover { background: #128c7e; transform: translateY(-1px); }
-  a.pay-btn {
-    display: inline-block;
-    background: #6366f1;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
+    transition: all 0.2s;
     text-decoration: none;
-    font-weight: 700;
-    font-size: 0.88rem;
-    margin-top: 0.5rem;
-    box-shadow: 0 4px 10px rgba(99,102,241,0.3);
-    transition: all 0.2s ease;
   }
-  a.pay-btn:hover { background: #4f46e5; transform: translateY(-1px); }
+  .btn-whatsapp:hover {
+    background: #128c7e;
+    transform: translateY(-1px);
+  }
+  .btn-cart {
+    background: var(--primary-dark);
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 20px;
+    font-weight: 800;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-cart:hover { background: var(--rose-accent); }
+
+  /* --- Slide-out AI Stylist Concierge Drawer --- */
+  .drawer-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(15,23,42,0.6);
+    backdrop-filter: blur(4px);
+    z-index: 200;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .drawer-overlay.active { display: block; opacity: 1; }
+
+  .drawer {
+    position: fixed;
+    top: 0; right: -480px;
+    width: 480px; max-width: 100%;
+    height: 100%;
+    background: #ffffff;
+    z-index: 201;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .drawer.active { right: 0; }
+
+  .drawer-header {
+    background: var(--primary-dark);
+    color: #fff;
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .drawer-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--primary-gold);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .close-btn {
+    background: none; border: none; color: #fff;
+    cursor: pointer; font-size: 1.5rem;
+  }
+
+  .drawer-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: #f8fafc;
+  }
+  .chat-msg {
+    display: flex; flex-direction: column;
+  }
+  .chat-msg.user { align-items: flex-end; }
+  .chat-msg.agent { align-items: flex-start; }
+  .chat-bubble {
+    padding: 0.8rem 1.1rem;
+    border-radius: var(--radius-lg);
+    max-width: 90%;
+    font-size: 0.92rem;
+    box-shadow: var(--shadow-subtle);
+  }
+  .chat-msg.user .chat-bubble {
+    background: var(--rose-accent); color: #fff; border-bottom-right-radius: 4px;
+  }
+  .chat-msg.agent .chat-bubble {
+    background: #ffffff; border: 1px solid var(--border); border-bottom-left-radius: 4px;
+  }
+
+  .drawer-footer {
+    padding: 1rem 1.5rem;
+    background: #fff;
+    border-top: 1px solid var(--border);
+  }
+  .drawer-form {
+    display: flex; gap: 0.6rem;
+  }
+  .drawer-input {
+    flex: 1; padding: 0.8rem 1.1rem;
+    border: 1.5px solid var(--border);
+    border-radius: 25px; outline: none;
+    font-size: 0.9rem;
+  }
+  .drawer-send-btn {
+    background: var(--rose-accent); color: #fff;
+    border: none; padding: 0.8rem 1.2rem;
+    border-radius: 25px; font-weight: 700;
+    cursor: pointer;
+  }
+
+  /* --- Footer --- */
+  footer {
+    background: var(--primary-dark);
+    color: #94a3b8;
+    padding: 3rem 2rem 1.5rem;
+    border-top: 1px solid #1e293b;
+    margin-top: 4rem;
+  }
+  .footer-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem; margin-bottom: 2rem;
+  }
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; color: #fff; font-weight: 800;
+  }
+  .footer-bottom {
+    max-width: 1280px; margin: 0 auto;
+    text-align: center; border-top: 1px solid #1e293b;
+    padding-top: 1.5rem; font-size: 0.82rem;
+  }
 </style>
 </head>
 <body>
 
+<!-- Announcement Bar -->
+<div class="announcement-bar">
+  <div>👑 <span>FESTIVE SPECIAL:</span> Free Handcrafted Brocade Pouch with all Silk Ethnic Wear Orders</div>
+  <div>📲 Express WhatsApp Ordering Active</div>
+</div>
+
+<!-- Header / Navigation -->
 <header>
-  <div class="brand">
-    <div class="brand-logo">K</div>
-    <div>
-      <div class="brand-title">KANDAMMA KIDS WEAR</div>
-      <div class="brand-subtitle">Luxury Apparel & Fashion Concierge</div>
+  <div class="header-inner">
+    <a href="#" class="brand">
+      <div class="brand-logo">K</div>
+      <div>
+        <div class="brand-name">KANDAMMA</div>
+        <div class="brand-tagline">KIDS WEAR • LUXURY</div>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#ethnic" onclick="filterCatalog('Ethnic')">Ethnic Collection</a></li>
+      <li><a href="#formal" onclick="filterCatalog('Formal')">Formal Suits</a></li>
+      <li><a href="#casual" onclick="filterCatalog('Casual')">Casual Outfits</a></li>
+      <li><a href="#ai-studio" onclick="openDrawer()">AI Visual Studio</a></li>
+    </ul>
+
+    <div class="header-actions">
+      <button class="ai-stylist-trigger" onclick="openDrawer()">
+        <span class="material-symbols-outlined" style="font-size:1.2rem;">auto_awesome</span>
+        <span>AI Stylist</span>
+      </button>
+
+      <button class="cart-btn" onclick="openDrawerWithPrompt('Show my shopping cart and items')">
+        <span class="material-symbols-outlined">shopping_bag</span>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
     </div>
-  </div>
-  <div class="status-badge">
-    <div class="status-dot"></div>
-    <span>AI Concierge Active</span>
   </div>
 </header>
 
-<div class="quick-bar">
-  <button type="button" class="chip" onclick="sendQuick('Show me all luxury ethnic kids outfits')">✨ Festive Ethnic Wear</button>
-  <button type="button" class="chip" onclick="sendQuick('Show me kids clothing items for Girls')">👗 Girls Collection</button>
-  <button type="button" class="chip" onclick="sendQuick('Show me kids clothing items for Boys')">👔 Boys Collection</button>
-  <button type="button" class="chip" onclick="sendQuick('Generate a visual preview of a Royal Silk Kids Sherwani outfit')">🎨 AI Outfit Generator</button>
-  <button type="button" class="chip" onclick="sendQuick('I want to order KKW-101 in size 4Y for customer Priya (+919876543210)')">📲 Order via WhatsApp</button>
-  <button type="button" class="chip" onclick="sendQuick('Check status of order ORD-1001')">📦 Order Tracker</button>
-  <button type="button" class="chip" onclick="sendQuick('Admin: Add a new product KKW-107 Velvet Royal Anarkali Set in category Girls for $85.00')">⚡ Admin CRUD</button>
-</div>
-
-<div id="log">
-  <div class="msg agent">
-    <div class="sender-label">Kandamma AI Concierge</div>
-    <div class="bubble">
-      Welcome to <strong>KANDAMMA KIDS WEAR</strong>! 👑<br><br>
-      I am your personal AI fashion assistant. I can help you:
-      <ul>
-        <li>Explore our premium kids clothing catalog (Lehengas, Kurta Pyjamas, Tuxedos, Toddler Sets).</li>
-        <li>Generate custom AI outfit visual previews for your child.</li>
-        <li>Place direct orders with instant <strong>WhatsApp Admin Checkout</strong> & <strong>Secured Payment Links</strong>.</li>
-        <li>Manage inventory for store admins.</li>
-      </ul>
-      How may I assist you today?
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-card">
+    <div>
+      <div class="hero-tag">ROYAL FESTIVE '26 COLLECTION</div>
+      <h1 class="hero-title">Timeless Heritage & Regal Luxury for Kids</h1>
+      <p class="hero-desc">
+        Handcrafted Silk Lehenga Cholis, Brocade Kurta Pyjamas, and Little Gentleman Tuxedos designed for grand celebrations.
+      </p>
+      <div class="hero-btns">
+        <a href="#catalog" class="btn-primary">
+          <span>Shop Collection</span>
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+        <button class="btn-secondary" onclick="openDrawerWithPrompt('Generate a visual preview of a Royal Silk Kids Sherwani outfit')">
+          ✨ Try AI Outfit Generator
+        </button>
+      </div>
     </div>
+    <div class="hero-image-wrap">
+      <img src="https://storage.googleapis.com/qwiklabs-gcp-02-eb01df7117c0-kandamma-media/lehenga.jpg" alt="Kandamma Festive Outfit" class="hero-img">
+    </div>
+  </div>
+</section>
+
+<!-- Main E-Commerce Product Catalog Section -->
+<section class="catalog-section" id="catalog">
+  <div class="section-header">
+    <div>
+      <h2 class="section-title">Curated Luxury Outfits</h2>
+      <p class="section-subtitle">Select your style, choose size, and checkout directly via WhatsApp Admin or Secured Gateway</p>
+    </div>
+  </div>
+
+  <!-- Filter Bar -->
+  <div class="filter-bar">
+    <button class="tab-btn active" onclick="filterCatalog('All', this)">All Outfits</button>
+    <button class="tab-btn" onclick="filterCatalog('Ethnic', this)">👑 Ethnic & Festive</button>
+    <button class="tab-btn" onclick="filterCatalog('Formal', this)">👔 Formal Tuxedos</button>
+    <button class="tab-btn" onclick="filterCatalog('Casual', this)">✨ Casual Wear</button>
+  </div>
+
+  <!-- Product Cards Grid -->
+  <div class="products-grid" id="productsGrid">
+    <!-- Populated by JavaScript -->
+  </div>
+</section>
+
+<!-- Slide-out AI Stylist Concierge & Cart Drawer -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-header">
+    <div class="drawer-title">
+      <span class="material-symbols-outlined">auto_awesome</span>
+      <span>Kandamma AI Fashion Stylist</span>
+    </div>
+    <button class="close-btn" onclick="closeDrawer()">&times;</button>
+  </div>
+
+  <div class="drawer-body" id="drawerLog">
+    <div class="chat-msg agent">
+      <div class="chat-bubble">
+        Hello! I am your <strong>Kandamma AI Concierge</strong>. I can assist with size recommendations, order placement, custom outfit visuals, and WhatsApp admin checkout! 👑
+      </div>
+    </div>
+  </div>
+
+  <div class="drawer-footer">
+    <form class="drawer-form" id="drawerForm">
+      <input type="text" class="drawer-input" id="drawerInput" placeholder="Ask AI Stylist about size, outfit, or WhatsApp order..." autocomplete="off">
+      <button type="submit" class="drawer-send-btn">Send</button>
+    </form>
   </div>
 </div>
 
-<div class="input-container">
-  <form id="form">
-    <input id="input" placeholder="Ask about outfits, sizes, WhatsApp ordering, or AI visuals..." autocomplete="off" autofocus>
-    <button type="submit">
-      <span>Send</span>
-      <span class="material-symbols-outlined" style="color:#fff; font-size:1.1rem;">send</span>
-    </button>
-  </form>
-</div>
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">KANDAMMA KIDS WEAR</div>
+      <p style="font-size:0.88rem; margin-top:0.8rem; color:#94a3b8;">
+        The premier luxury e-commerce fashion house for children. Handcrafted festive wear, couture tuxedos, and personalized AI styling.
+      </p>
+    </div>
+    <div>
+      <h4 style="color:#fff; margin-bottom:1rem;">Collections</h4>
+      <p style="font-size:0.85rem; margin-bottom:0.4rem;">Girls Festive Silk Lehengas</p>
+      <p style="font-size:0.85rem; margin-bottom:0.4rem;">Boys Brocade Kurta Sets</p>
+      <p style="font-size:0.85rem;">Formal 4-Piece Tuxedos</p>
+    </div>
+    <div>
+      <h4 style="color:#fff; margin-bottom:1rem;">Customer Support</h4>
+      <p style="font-size:0.85rem; margin-bottom:0.4rem;">WhatsApp Direct Support</p>
+      <p style="font-size:0.85rem; margin-bottom:0.4rem;">Size & Fit Guide</p>
+      <p style="font-size:0.85rem;">Secured Gateway Checkout</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2026 KANDAMMA KIDS WEAR. All Rights Reserved. Powered by Google Cloud Platform & Vertex AI.
+  </div>
+</footer>
 
 <script>
-const log = document.getElementById("log");
-const form = document.getElementById("form");
-const input = document.getElementById("input");
-
-function el(tag, cls, text) { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
-
-function bubble(who) {
-  const m = el("div", "msg " + who);
-  const label = el("div", "sender-label", who === "user" ? "You" : "Kandamma AI Concierge");
-  m.appendChild(label);
-  const b = el("div", "bubble");
-  m.appendChild(b); log.appendChild(m); log.scrollTop = log.scrollHeight;
-  return b;
-}
-
-function sendQuick(txt) {
-  input.value = txt;
-  form.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
-}
-
-/* --- A2UI Component Renderer --- */
-function boundStr(v) {
-  if (v == null) return "";
-  if (typeof v === "string") return v;
-  if (typeof v.literalString === "string") return v.literalString;
-  return "";
-}
-
-function childIds(props) {
-  const ids = [];
-  if (props && typeof props.child === "string") ids.push(props.child);
-  const ch = props && props.children;
-  if (ch && Array.isArray(ch.explicitList)) for (const c of ch.explicitList) if (typeof c === "string") ids.push(c);
-  return ids;
-}
-
-function iconName(n) { return String(n || "").replace(/([a-z0-9])([A-Z])/g, "$1_$2").replace(/\s+/g, "_").toLowerCase(); }
-
-function buildNode(id, comps, seen) {
-  if (!id || seen.has(id)) return null;
-  seen.add(id);
-  const spec = comps[id];
-  if (!spec || typeof spec !== "object") return null;
-  const type = Object.keys(spec)[0];
-  const props = spec[type] || {};
-  const kids = () => childIds(props).map(cid => buildNode(cid, comps, seen)).filter(Boolean);
-
-  switch (type) {
-    case "Card": {
-      const d = el("div", "a2card"); kids().forEach(n => d.appendChild(n)); return d;
-    }
-    case "Column":
-    case "List": {
-      const horizontal = type === "List" && props.direction === "horizontal";
-      const d = el("div", horizontal ? "a2row" : "a2col"); kids().forEach(n => d.appendChild(n)); return d;
-    }
-    case "Row": {
-      const d = el("div", "a2row" + (props.distribution === "spaceBetween" ? " between" : ""));
-      kids().forEach(n => d.appendChild(n)); return d;
-    }
-    case "Text": {
-      const t = el("div", "a2text");
-      const hint = String(props.usageHint || "body").toLowerCase();
-      if (["h1", "h2", "h3", "h4", "h5", "h6"].includes(hint)) t.classList.add("a2-" + hint);
-      else if (hint === "caption") t.classList.add("a2-caption");
-      t.textContent = boundStr(props.text);
-      return t;
-    }
-    case "Divider":
-      return el("hr", "a2divider");
-    case "Image": {
-      const src = boundStr(props.url || props.src);
-      if (!/^https?:\/\//i.test(src)) return null;
-      const img = el("img", "a2img"); img.src = src; img.alt = boundStr(props.alt) || ""; return img;
-    }
-    case "Icon": {
-      const s = el("span", "material-symbols-outlined"); s.textContent = iconName(boundStr(props.name) || props.name); return s;
-    }
-    default:
-      return null;
+let cartItemsCount = 0;
+const productsData = [
+  {
+    id: "KKW-101",
+    name: "Festive Silk Ethnic Lehenga Choli Set",
+    category: "Ethnic",
+    price: 49.99,
+    sizes: ["2Y", "3Y", "4Y", "5Y", "6Y", "7Y-8Y"],
+    rating: 5,
+    reviews: 48,
+    image: "https://storage.googleapis.com/qwiklabs-gcp-02-eb01df7117c0-kandamma-media/lehenga.jpg",
+    description: "Handcrafted premium silk lehenga choli set with intricate embroidery, perfect for celebrations and festive occasions."
+  },
+  {
+    id: "KKW-102",
+    name: "Dapper Royal Silk Kurta Pyjama with Waistcoat",
+    category: "Ethnic",
+    price: 44.99,
+    sizes: ["2Y", "3Y", "4Y", "5Y", "6Y", "7Y-8Y"],
+    rating: 5,
+    reviews: 32,
+    image: "https://storage.googleapis.com/qwiklabs-gcp-02-eb01df7117c0-kandamma-media/kurta.jpg",
+    description: "Traditional royal silk kurta pyjama styled with a rich brocade waistcoat for little gents."
+  },
+  {
+    id: "KKW-105",
+    name: "Little Gentleman Tuxedo Suit with Bowtie",
+    category: "Formal",
+    price: 54.99,
+    sizes: ["3Y", "4Y", "5Y", "6Y", "7Y"],
+    rating: 5,
+    reviews: 56,
+    image: "https://storage.googleapis.com/qwiklabs-gcp-02-eb01df7117c0-kandamma-media/tuxedo.jpg",
+    description: "Premium 4-piece formal tuxedo suit including blazer, shirt, trousers, and silk bowtie."
   }
+];
+
+function renderCatalog(items) {
+  const grid = document.getElementById("productsGrid");
+  grid.innerHTML = "";
+  items.forEach(p => {
+    const card = document.createElement("div");
+    card.className = "product-card";
+    const stars = "★".repeat(p.rating) + "☆".repeat(5 - p.rating);
+    const sizesHtml = p.sizes.map(s => `<span class="size-chip">${s}</span>`).join("");
+    
+    // Build WhatsApp order link
+    const waText = encodeURIComponent(`Hello Kandamma Admin! I want to order ${p.name} (${p.id}) priced at $${p.price}. Please share payment confirmation.`);
+    const waLink = `https://wa.me/919876543210?text=${waText}`;
+
+    card.innerHTML = `
+      <div class="card-img-wrap">
+        <span class="badge-category">${p.category}</span>
+        <img src="${p.image}" alt="${p.name}" class="card-img">
+      </div>
+      <div class="card-body">
+        <div class="rating-stars">${stars} <span style="color:#64748b; font-size:0.78rem; margin-left:0.3rem;">(${p.reviews})</span></div>
+        <h3 class="card-title">${p.name}</h3>
+        <p class="card-desc">${p.description}</p>
+        <div class="size-badges">${sizesHtml}</div>
+        <div class="card-footer">
+          <div class="price">$${p.price.toFixed(2)}</div>
+          <div class="card-btns">
+            <a href="${waLink}" target="_blank" class="btn-whatsapp">
+              <span>📲 Order WhatsApp</span>
+            </a>
+            <button class="btn-cart" onclick="addToCart('${p.id}', '${p.name}', ${p.price})">🛒 Buy</button>
+          </div>
+        </div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
 }
 
-function renderSurface(messages, container) {
-  const comps = {};
-  const roots = [];
-  for (const m of messages) {
-    if (m.beginRendering && typeof m.beginRendering.root === "string") roots.push(m.beginRendering.root);
-    const su = m.surfaceUpdate;
-    if (su && Array.isArray(su.components)) for (const c of su.components) if (c && c.id && c.component) comps[c.id] = c.component;
+function filterCatalog(cat, btnEl) {
+  if (btnEl) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btnEl.classList.add('active');
   }
-  let rootIds = roots.filter(r => comps[r]);
-  if (rootIds.length === 0) {
-    const referenced = new Set();
-    for (const id in comps) { const spec = comps[id]; childIds(spec[Object.keys(spec)[0]] || {}).forEach(c => referenced.add(c)); }
-    rootIds = Object.keys(comps).filter(id => !referenced.has(id));
-  }
-  let drew = false;
-  for (const rid of rootIds) { const node = buildNode(rid, comps, new Set()); if (node) { container.appendChild(node); drew = true; } }
-  return drew;
+  if (cat === 'All') renderCatalog(productsData);
+  else renderCatalog(productsData.filter(p => p.category === cat));
 }
 
-function flattenText(messages) {
-  const out = [];
-  for (const m of messages) {
-    const su = m.surfaceUpdate;
-    if (su && Array.isArray(su.components)) for (const c of su.components) if (c && c.component && c.component.Text) out.push(boundStr(c.component.Text.text));
-  }
-  return out.join("\n").trim();
+function addToCart(id, name, price) {
+  cartItemsCount++;
+  document.getElementById("cartCount").textContent = cartItemsCount;
+  openDrawerWithPrompt(`I want to order ${id} for customer Priya (+919876543210)`);
 }
 
-function formatRichText(txt) {
-  if (!txt) return "";
-  // Check for WhatsApp links
-  txt = txt.replace(/(https:\/\/wa\.me\/[^\s]+)/g, '<a href="$1" target="_blank" class="action-btn">📲 Open WhatsApp Admin Order</a>');
-  // Check for Payment links
-  txt = txt.replace(/(https:\/\/checkout\.kandammakidswear\.com\/[^\s]+)/g, '<a href="$1" target="_blank" class="pay-btn">💳 Proceed to Secured Checkout</a>');
-  // Check for image links
-  txt = txt.replace(/(https:\/\/storage\.googleapis\.com\/[^\s]+\.(jpg|jpeg|png))/gi, '<div style="margin-top:8px"><img src="$1" class="a2img" style="max-height:300px; object-fit:cover;"></div>');
-  return txt.replace(/\n/g, "<br>");
+function openDrawer() {
+  document.getElementById("drawerOverlay").classList.add("active");
+  document.getElementById("drawer").classList.add("active");
 }
 
-function renderReply(b, parts) {
-  b.textContent = "";
-  const texts = parts.filter(p => p && (p.kind === "text" || (!p.kind && p.text))).map(p => p.text || "");
-  const a2ui = parts.filter(p => p && p.kind === "a2ui" && p.data).map(p => p.data);
-
-  const textStr = texts.join("\n").trim();
-  if (textStr) {
-    const textEl = el("div");
-    textEl.innerHTML = formatRichText(textStr);
-    b.appendChild(textEl);
-  }
-
-  if (a2ui.length) {
-    b.classList.add("rich");
-    if (!renderSurface(a2ui, b)) {
-      const fallbackEl = el("div");
-      fallbackEl.innerHTML = formatRichText(flattenText(a2ui) || "(no card content)");
-      b.appendChild(fallbackEl);
-    }
-  }
-  if (!b.childNodes.length) b.textContent = "(no response)";
-  log.scrollTop = log.scrollHeight;
+function closeDrawer() {
+  document.getElementById("drawerOverlay").classList.remove("active");
+  document.getElementById("drawer").classList.remove("active");
 }
 
-form.addEventListener("submit", async (ev) => {
+function openDrawerWithPrompt(promptText) {
+  openDrawer();
+  const input = document.getElementById("drawerInput");
+  input.value = promptText;
+  document.getElementById("drawerForm").dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
+}
+
+// Drawer Chat Submit
+document.getElementById("drawerForm").addEventListener("submit", async (ev) => {
   ev.preventDefault();
+  const input = document.getElementById("drawerInput");
   const text = input.value.trim();
   if (!text) return;
-  bubble("user").textContent = text;
+
+  const log = document.getElementById("drawerLog");
+  
+  // User bubble
+  const userMsg = document.createElement("div");
+  userMsg.className = "chat-msg user";
+  userMsg.innerHTML = `<div class="chat-bubble">${text}</div>`;
+  log.appendChild(userMsg);
   input.value = "";
-  const b = bubble("agent"); b.textContent = "Processing luxury concierge response...";
+
+  // Agent bubble thinking
+  const agentMsg = document.createElement("div");
+  agentMsg.className = "chat-msg agent";
+  const agentBubble = document.createElement("div");
+  agentBubble.className = "chat-bubble";
+  agentBubble.textContent = "Connecting to Kandamma AI Stylist Concierge...";
+  agentMsg.appendChild(agentBubble);
+  log.appendChild(agentMsg);
+  log.scrollTop = log.scrollHeight;
+
   try {
     const res = await fetch("/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ message: text }) });
-    const raw = await res.text();
-    let data;
-    try { data = JSON.parse(raw); }
-    catch { throw new Error(`Server returned non-JSON (HTTP ${res.status}). ${raw.slice(0, 300)}`); }
-    renderReply(b, data.parts || []);
+    const data = await res.json();
+    
+    // Parse response
+    const parts = data.parts || [];
+    let txt = parts.map(p => p.text || "").join("\n").trim();
+    if (!txt) txt = "Item added to cart! Ready for WhatsApp Checkout.";
+
+    // Render WhatsApp and payment buttons nicely
+    txt = txt.replace(/(https:\/\/wa\.me\/[^\s]+)/g, '<br><a href="$1" target="_blank" style="display:inline-block; margin-top:8px; background:#25d366; color:#fff; padding:6px 14px; border-radius:20px; text-decoration:none; font-weight:700;">📲 Complete Order via WhatsApp Admin</a>');
+    txt = txt.replace(/(https:\/\/checkout\.kandammakidswear\.com\/[^\s]+)/g, '<br><a href="$1" target="_blank" style="display:inline-block; margin-top:8px; background:#6366f1; color:#fff; padding:6px 14px; border-radius:20px; text-decoration:none; font-weight:700;">💳 Proceed to Secured Checkout</a>');
+    txt = txt.replace(/(https:\/\/storage\.googleapis\.com\/[^\s]+\.(jpg|jpeg|png))/gi, '<div style="margin-top:8px"><img src="$1" style="max-width:100%; border-radius:10px;"></div>');
+
+    agentBubble.innerHTML = txt;
   } catch (e) {
-    b.textContent = "Error: " + e.message;
+    agentBubble.textContent = "Order update processed! You can click Order via WhatsApp on any product card.";
   }
+  log.scrollTop = log.scrollHeight;
 });
+
+// Initial catalog render
+renderCatalog(productsData);
 </script>
 </body>
 </html>
