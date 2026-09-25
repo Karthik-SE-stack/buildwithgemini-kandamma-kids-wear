@@ -3,482 +3,453 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KANDAMMA KIDS WEAR — Luxury E-Commerce Fashion Store</title>
+<title>KANDAMMA — Haute Couture & Heritage Kids Fashion</title>
+<meta name="description" content="KAndamma Kids Wear — Premium handcrafted festive silk lehengas, royal kurta sets, and bespoke children's couture.">
+
+<!-- Modern Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
 <style>
   :root {
-    --primary-dark: #0f172a;
-    --primary-gold: #d4af37;
-    --gold-gradient: linear-gradient(135deg, #f59e0b 0%, #d4af37 50%, #b45309 100%);
-    --rose-accent: #e11d48;
-    --rose-gradient: linear-gradient(135deg, #fb7185 0%, #e11d48 100%);
-    --bg-main: #f8fafc;
-    --card-bg: #ffffff;
-    --text-dark: #0f172a;
-    --text-muted: #64748b;
-    --border: #e2e8f0;
-    --shadow-subtle: 0 4px 12px rgba(0,0,0,0.03);
-    --shadow-hover: 0 20px 30px -10px rgba(0,0,0,0.12);
-    --radius-xl: 20px;
-    --radius-lg: 14px;
+    --bg-cream: #FDFBF7;
+    --card-bg: #FFFFFF;
+    --text-primary: #12141D;
+    --text-muted: #64748B;
+    --accent-gold: #C5A059;
+    --accent-gold-dark: #A3823E;
+    --accent-crimson: #8B1E26;
+    --border-color: #E2E8F0;
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    font-family: 'Outfit', sans-serif;
-    background: var(--bg-main);
-    color: var(--text-dark);
+    font-family: var(--font-sans);
+    background-color: var(--bg-cream);
+    color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
   }
 
-  /* --- Top Announcement Bar --- */
+  /* Top Editorial Announcement Bar */
   .announcement-bar {
-    background: var(--primary-dark);
-    color: #f1f5f9;
+    background: #0F172A;
+    color: #F8FAFC;
     text-align: center;
-    padding: 0.5rem 1rem;
+    padding: 9px 16px;
     font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     font-weight: 500;
-    letter-spacing: 0.03em;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1.5rem;
+    gap: 8px;
   }
-  .announcement-bar span { color: var(--primary-gold); font-weight: 700; }
+  .announcement-bar span.highlight {
+    color: var(--accent-gold);
+    font-weight: 700;
+  }
 
-  /* --- Header / Navigation --- */
-  header {
-    background: #ffffff;
-    border-bottom: 1px solid var(--border);
+  /* Navigation Bar */
+  header.navbar {
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.04);
-  }
-  .header-inner {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 1rem 2rem;
+    background: rgba(253, 251, 247, 0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    padding: 16px 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    text-decoration: none;
-  }
+
   .brand-logo {
-    width: 46px;
-    height: 46px;
-    background: var(--rose-gradient);
-    border-radius: 14px;
+    font-family: var(--font-serif);
+    font-size: 1.85rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    text-decoration: none;
     display: flex;
     align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-weight: 900;
-    font-size: 1.5rem;
-    box-shadow: 0 4px 15px rgba(225,29,72,0.35);
+    gap: 8px;
   }
-  .brand-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 800;
-    letter-spacing: -0.01em;
-    color: var(--primary-dark);
-  }
-  .brand-tagline {
-    font-size: 0.72rem;
-    color: var(--rose-accent);
-    font-weight: 700;
-    letter-spacing: 0.15em;
+  .brand-logo .sub-tag {
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
+    color: var(--accent-gold);
+    font-weight: 600;
+    display: block;
+    margin-top: -4px;
   }
 
   .nav-links {
     display: flex;
-    gap: 2rem;
-    align-items: center;
+    gap: 32px;
     list-style: none;
   }
   .nav-links a {
     text-decoration: none;
-    color: #334155;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+  }
+  .nav-links a:hover, .nav-links a.active {
+    color: var(--accent-gold);
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .btn-icon {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background 0.2s ease;
+  }
+  .btn-icon:hover {
+    background: rgba(0,0,0,0.05);
+  }
+
+  .cart-badge {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: var(--accent-crimson);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn-stylist {
+    background: var(--text-primary);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 0.85rem;
     font-weight: 600;
-    font-size: 0.95rem;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--rose-accent); }
-
-  .header-actions {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  .cart-btn {
-    position: relative;
-    background: #f1f5f9;
+    letter-spacing: 0.04em;
     border: none;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .cart-btn:hover { background: #e2e8f0; }
-  .cart-count {
-    position: absolute;
-    top: -4px;
-    right: -4px;
-    background: var(--rose-accent);
-    color: #fff;
-    font-size: 0.72rem;
-    font-weight: 800;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .ai-stylist-trigger {
-    background: var(--gold-gradient);
-    color: #0f172a;
-    border: none;
-    padding: 0.65rem 1.3rem;
-    border-radius: 28px;
-    font-weight: 800;
-    font-size: 0.88rem;
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 0.4rem;
-    box-shadow: 0 4px 15px rgba(245,158,11,0.3);
-    transition: all 0.2s;
+    gap: 8px;
+    transition: transform 0.2s ease, background 0.2s ease;
   }
-  .ai-stylist-trigger:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(245,158,11,0.45);
+  .btn-stylist:hover {
+    background: var(--accent-gold-dark);
+    transform: translateY(-1px);
   }
 
-  /* --- Hero Showcase Banner --- */
-  .hero {
-    max-width: 1280px;
-    margin: 1.5rem auto;
-    padding: 0 2rem;
+  /* Hero Section */
+  .hero-section {
+    padding: 40px 40px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
   }
-  .hero-card {
-    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 60%, #311b92 100%);
-    border-radius: var(--radius-xl);
-    padding: 3.5rem 3rem;
-    color: #ffffff;
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 2rem;
-    align-items: center;
-    position: relative;
+  .hero-banner {
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(15,23,42,0.25);
+    position: relative;
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(90deg, rgba(15,23,42,0.85) 0%, rgba(15,23,42,0.4) 60%, rgba(15,23,42,0.1) 100%),
+                url('https://storage.googleapis.com/qwiklabs-gcp-02-eb01df7117c0-kandamma-media/lehenga.jpg') center/cover no-repeat;
+    color: white;
+    padding: 60px;
   }
-  .hero-card::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -20%;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(225,29,72,0.25) 0%, rgba(0,0,0,0) 70%);
-    pointer-events: none;
+  .hero-content {
+    max-width: 580px;
   }
   .hero-tag {
-    display: inline-block;
-    background: rgba(212,175,55,0.2);
-    border: 1px solid rgba(212,175,55,0.4);
-    color: #fde047;
-    padding: 0.35rem 0.9rem;
-    border-radius: 20px;
-    font-size: 0.82rem;
-    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 1rem;
+    color: var(--accent-gold);
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: inline-block;
   }
   .hero-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 3rem;
-    font-weight: 800;
+    font-family: var(--font-serif);
+    font-size: 3.4rem;
+    font-weight: 700;
     line-height: 1.15;
-    margin-bottom: 1rem;
-    background: linear-gradient(to right, #ffffff, #fecdd3);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    margin-bottom: 18px;
   }
   .hero-desc {
     font-size: 1.05rem;
-    color: #cbd5e1;
-    margin-bottom: 2rem;
-    max-width: 540px;
+    color: #CBD5E1;
+    margin-bottom: 28px;
+    font-weight: 300;
   }
-  .hero-btns {
+  .hero-buttons {
     display: flex;
-    gap: 1rem;
+    gap: 16px;
+    flex-wrap: wrap;
   }
   .btn-primary {
-    background: var(--rose-accent);
-    color: #fff;
-    padding: 0.9rem 2rem;
+    background: var(--accent-gold);
+    color: #0F172A;
+    padding: 14px 32px;
     border-radius: 30px;
-    font-weight: 800;
-    font-size: 0.95rem;
-    border: none;
-    cursor: pointer;
+    font-weight: 700;
     text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    box-shadow: 0 6px 20px rgba(225,29,72,0.4);
-    transition: all 0.2s;
+    gap: 8px;
   }
   .btn-primary:hover {
-    background: #be123c;
+    background: white;
+    color: var(--text-primary);
     transform: translateY(-2px);
   }
   .btn-secondary {
-    background: rgba(255,255,255,0.12);
-    color: #fff;
-    padding: 0.9rem 1.8rem;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(8px);
+    color: white;
+    padding: 14px 28px;
     border-radius: 30px;
-    font-weight: 700;
-    font-size: 0.95rem;
-    border: 1px solid rgba(255,255,255,0.25);
-    cursor: pointer;
+    font-weight: 600;
     text-decoration: none;
-    transition: all 0.2s;
-  }
-  .btn-secondary:hover { background: rgba(255,255,255,0.2); }
-
-  .hero-image-wrap {
-    position: relative;
-    text-align: center;
-  }
-  .hero-img {
-    width: 100%;
-    max-width: 380px;
-    border-radius: var(--radius-lg);
-    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
-    border: 3px solid rgba(255,255,255,0.15);
-  }
-
-  /* --- Main Catalog Controls --- */
-  .catalog-section {
-    max-width: 1280px;
-    margin: 3rem auto;
-    padding: 0 2rem;
-  }
-  .section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 2rem;
-  }
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: var(--primary-dark);
-  }
-  .section-subtitle {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-  }
-
-  .filter-bar {
-    display: flex;
-    gap: 0.8rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-  }
-  .tab-btn {
-    background: #ffffff;
-    border: 1.5px solid var(--border);
-    padding: 0.6rem 1.4rem;
-    border-radius: 25px;
-    font-weight: 700;
     font-size: 0.9rem;
-    color: #475569;
-    cursor: pointer;
-    transition: all 0.2s;
+    border: 1px solid rgba(255,255,255,0.3);
+    transition: all 0.2s ease;
   }
-  .tab-btn.active, .tab-btn:hover {
-    background: var(--primary-dark);
-    color: #ffffff;
-    border-color: var(--primary-dark);
-    box-shadow: 0 4px 12px rgba(15,23,42,0.15);
+  .btn-secondary:hover {
+    background: rgba(255,255,255,0.3);
   }
 
-  /* --- Product Grid --- */
-  .products-grid {
+  /* Category Filter Pills */
+  .category-bar {
+    max-width: 1400px;
+    margin: 40px auto 20px;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 16px;
+  }
+  .category-title {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+  .filter-pills {
+    display: flex;
+    gap: 10px;
+  }
+  .pill {
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .pill.active, .pill:hover {
+    background: var(--text-primary);
+    color: white;
+    border-color: var(--text-primary);
+  }
+
+  /* Product Catalog Grid */
+  .catalog-grid {
+    max-width: 1400px;
+    margin: 20px auto 60px;
+    padding: 0 40px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 2rem;
+    gap: 32px;
   }
+
   .product-card {
     background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-xl);
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: var(--shadow-subtle);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
     position: relative;
   }
   .product-card:hover {
     transform: translateY(-6px);
-    box-shadow: var(--shadow-hover);
-    border-color: #cbd5e1;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
   }
 
   .card-img-wrap {
+    height: 380px;
     position: relative;
-    height: 280px;
-    background: #f1f5f9;
     overflow: hidden;
+    background: #F1F5F9;
   }
-  .card-img {
+  .card-img-wrap img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
   }
-  .product-card:hover .card-img {
+  .product-card:hover .card-img-wrap img {
     transform: scale(1.05);
   }
-  .badge-category {
+
+  .card-tag {
     position: absolute;
-    top: 1rem;
-    left: 1rem;
-    background: rgba(15,23,42,0.85);
-    backdrop-filter: blur(8px);
-    color: var(--primary-gold);
-    padding: 0.3rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 800;
+    top: 14px;
+    left: 14px;
+    background: var(--text-primary);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 12px;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
   }
 
   .card-body {
-    padding: 1.4rem;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    flex: 1;
+    flex-grow: 1;
   }
-  .rating-stars {
-    color: #f59e0b;
-    font-size: 0.9rem;
-    margin-bottom: 0.4rem;
-    display: flex;
-    align-items: center;
-    gap: 0.2rem;
+  .card-category {
+    font-size: 0.75rem;
+    color: var(--accent-gold-dark);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
   }
   .card-title {
-    font-size: 1.15rem;
-    font-weight: 800;
-    color: var(--primary-dark);
-    margin-bottom: 0.4rem;
-    line-height: 1.3;
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-primary);
   }
-  .card-desc {
-    font-size: 0.88rem;
-    color: var(--text-muted);
-    margin-bottom: 1rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .size-badges {
-    display: flex;
-    gap: 0.4rem;
-    margin-bottom: 1.2rem;
-    flex-wrap: wrap;
-  }
-  .size-chip {
-    background: #f1f5f9;
-    padding: 0.25rem 0.6rem;
-    border-radius: 6px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: #475569;
-  }
-
-  .card-footer {
-    margin-top: auto;
+  .card-price-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 1rem;
-    border-top: 1px solid #f1f5f9;
+    margin-bottom: 14px;
   }
-  .price {
-    font-size: 1.35rem;
-    font-weight: 900;
-    color: var(--primary-dark);
+  .card-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  .card-rating {
+    font-size: 0.85rem;
+    color: var(--accent-gold);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 600;
   }
 
-  .card-btns {
+  /* Size Selector Chips */
+  .size-chips {
     display: flex;
-    gap: 0.5rem;
+    gap: 6px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
   }
-  .btn-whatsapp {
-    background: #25d366;
-    color: #ffffff;
-    border: none;
-    padding: 0.6rem 1rem;
-    border-radius: 20px;
-    font-weight: 800;
-    font-size: 0.82rem;
+  .size-chip {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: 1px solid var(--border-color);
+    background: #F8FAFC;
     cursor: pointer;
-    display: inline-flex;
+  }
+  .size-chip.selected {
+    background: var(--text-primary);
+    color: white;
+    border-color: var(--text-primary);
+  }
+
+  .card-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+  }
+  .btn-card-buy {
+    flex: 1;
+    background: var(--text-primary);
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  .btn-card-buy:hover {
+    background: var(--accent-gold-dark);
+  }
+  .btn-card-wa {
+    background: #25D366;
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    display: flex;
     align-items: center;
-    gap: 0.3rem;
-    box-shadow: 0 4px 10px rgba(37,211,102,0.3);
-    transition: all 0.2s;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.85rem;
+    gap: 6px;
+    transition: background 0.2s ease;
     text-decoration: none;
   }
-  .btn-whatsapp:hover {
-    background: #128c7e;
-    transform: translateY(-1px);
+  .btn-card-wa:hover {
+    background: #128C7E;
   }
-  .btn-cart {
-    background: var(--primary-dark);
-    color: #fff;
-    border: none;
-    padding: 0.6rem 1rem;
-    border-radius: 20px;
-    font-weight: 800;
-    font-size: 0.82rem;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-  .btn-cart:hover { background: var(--rose-accent); }
 
-  /* --- Slide-out AI Stylist Concierge Drawer --- */
+  /* Slide-Over Cart / AI Stylist Drawer */
   .drawer-overlay {
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
+    top: 0; left: 0; right: 0; bottom: 0;
     background: rgba(15,23,42,0.6);
     backdrop-filter: blur(4px);
     z-index: 200;
@@ -486,114 +457,175 @@
     opacity: 0;
     transition: opacity 0.3s ease;
   }
-  .drawer-overlay.active { display: block; opacity: 1; }
+  .drawer-overlay.active {
+    display: block;
+    opacity: 1;
+  }
 
   .drawer {
     position: fixed;
     top: 0; right: -480px;
-    width: 480px; max-width: 100%;
+    width: 460px;
+    max-width: 100%;
     height: 100%;
-    background: #ffffff;
+    background: white;
     z-index: 201;
     box-shadow: -10px 0 30px rgba(0,0,0,0.15);
+    transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
-    transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .drawer.active { right: 0; }
+  .drawer.active {
+    right: 0;
+  }
 
   .drawer-header {
-    background: var(--primary-dark);
-    color: #fff;
-    padding: 1.2rem 1.5rem;
+    padding: 24px;
+    border-bottom: 1px solid var(--border-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
   .drawer-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.25rem;
-    font-weight: 800;
-    color: var(--primary-gold);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .close-btn {
-    background: none; border: none; color: #fff;
-    cursor: pointer; font-size: 1.5rem;
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 700;
   }
 
   .drawer-body {
-    flex: 1;
+    padding: 24px;
+    flex-grow: 1;
     overflow-y: auto;
-    padding: 1.2rem 1.5rem;
+  }
+
+  .cart-item {
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    background: #f8fafc;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
   }
-  .chat-msg {
-    display: flex; flex-direction: column;
+  .cart-item img {
+    width: 80px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
   }
-  .chat-msg.user { align-items: flex-end; }
-  .chat-msg.agent { align-items: flex-start; }
-  .chat-bubble {
-    padding: 0.8rem 1.1rem;
-    border-radius: var(--radius-lg);
-    max-width: 90%;
-    font-size: 0.92rem;
-    box-shadow: var(--shadow-subtle);
+  .cart-item-info {
+    flex-grow: 1;
   }
-  .chat-msg.user .chat-bubble {
-    background: var(--rose-accent); color: #fff; border-bottom-right-radius: 4px;
+  .cart-item-title {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 4px;
   }
-  .chat-msg.agent .chat-bubble {
-    background: #ffffff; border: 1px solid var(--border); border-bottom-left-radius: 4px;
+  .cart-item-meta {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .cart-item-price {
+    font-weight: 700;
+    color: var(--text-primary);
   }
 
   .drawer-footer {
-    padding: 1rem 1.5rem;
-    background: #fff;
-    border-top: 1px solid var(--border);
+    padding: 24px;
+    border-top: 1px solid var(--border-color);
+    background: #F8FAFC;
   }
-  .drawer-form {
-    display: flex; gap: 0.6rem;
+  .total-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 16px;
   }
-  .drawer-input {
-    flex: 1; padding: 0.8rem 1.1rem;
-    border: 1.5px solid var(--border);
-    border-radius: 25px; outline: none;
-    font-size: 0.9rem;
-  }
-  .drawer-send-btn {
-    background: var(--rose-accent); color: #fff;
-    border: none; padding: 0.8rem 1.2rem;
-    border-radius: 25px; font-weight: 700;
+  .btn-checkout {
+    width: 100%;
+    background: #25D366;
+    color: white;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
   }
 
-  /* --- Footer --- */
-  footer {
-    background: var(--primary-dark);
-    color: #94a3b8;
-    padding: 3rem 2rem 1.5rem;
-    border-top: 1px solid #1e293b;
-    margin-top: 4rem;
+  /* Chat Messages in Drawer */
+  .chat-box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
-  .footer-inner {
-    max-width: 1280px; margin: 0 auto;
-    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 3rem; margin-bottom: 2rem;
+  .msg {
+    padding: 12px 16px;
+    border-radius: 14px;
+    font-size: 0.9rem;
+    max-width: 85%;
+    line-height: 1.5;
+  }
+  .msg.bot {
+    background: #F1F5F9;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+  }
+  .msg.user {
+    background: var(--text-primary);
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+  }
+
+  /* Footer */
+  footer {
+    background: #0F172A;
+    color: #94A3B8;
+    padding: 60px 40px 30px;
+    margin-top: 80px;
+  }
+  .footer-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
   }
   .footer-brand {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem; color: #fff; font-weight: 800;
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    color: white;
+    margin-bottom: 12px;
+  }
+  .footer-col h4 {
+    color: white;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .footer-col a {
+    color: #94A3B8;
+    text-decoration: none;
+    font-size: 0.85rem;
   }
   .footer-bottom {
-    max-width: 1280px; margin: 0 auto;
-    text-align: center; border-top: 1px solid #1e293b;
-    padding-top: 1.5rem; font-size: 0.82rem;
+    text-align: center;
+    border-top: 1px solid #1E293B;
+    padding-top: 24px;
+    font-size: 0.8rem;
   }
 </style>
 </head>
@@ -601,301 +633,293 @@
 
 <!-- Announcement Bar -->
 <div class="announcement-bar">
-  <div>👑 <span>FESTIVE SPECIAL:</span> Free Handcrafted Brocade Pouch with all Silk Ethnic Wear Orders</div>
-  <div>📲 Express WhatsApp Ordering Active</div>
+  <span>✨ Festive Couture '26: Enjoy Express Dispatch & Free Worldwide Shipping | Use Code <span class="highlight">FESTIVE10</span></span>
 </div>
 
-<!-- Header / Navigation -->
-<header>
-  <div class="header-inner">
-    <a href="#" class="brand">
-      <div class="brand-logo">K</div>
-      <div>
-        <div class="brand-name">KANDAMMA</div>
-        <div class="brand-tagline">KIDS WEAR • LUXURY</div>
-      </div>
-    </a>
+<!-- Header -->
+<header class="navbar">
+  <a href="#" class="brand-logo">
+    KANDAMMA
+    <span class="sub-tag">KIDS WEAR • HAUTE COUTURE</span>
+  </a>
 
-    <ul class="nav-links">
-      <li><a href="#ethnic" onclick="filterCatalog('Ethnic')">Ethnic Collection</a></li>
-      <li><a href="#formal" onclick="filterCatalog('Formal')">Formal Suits</a></li>
-      <li><a href="#casual" onclick="filterCatalog('Casual')">Casual Outfits</a></li>
-      <li><a href="#ai-studio" onclick="openDrawer()">AI Visual Studio</a></li>
-    </ul>
+  <ul class="nav-links">
+    <li><a href="#" class="active">All Outfits</a></li>
+    <li><a href="#">👑 Ethnic & Festive</a></li>
+    <li><a href="#">👔 Formal Tuxedos</a></li>
+    <li><a href="#">✨ Organic Essentials</a></li>
+  </ul>
 
-    <div class="header-actions">
-      <button class="ai-stylist-trigger" onclick="openDrawer()">
-        <span class="material-symbols-outlined" style="font-size:1.2rem;">auto_awesome</span>
-        <span>AI Stylist</span>
-      </button>
-
-      <button class="cart-btn" onclick="openDrawerWithPrompt('Show my shopping cart and items')">
-        <span class="material-symbols-outlined">shopping_bag</span>
-        <span class="cart-count" id="cartCount">0</span>
-      </button>
-    </div>
+  <div class="nav-actions">
+    <button class="btn-stylist" onclick="openDrawer('stylist')">
+      <span class="material-symbols-outlined" style="font-size:18px;">auto_awesome</span>
+      AI Stylist
+    </button>
+    <button class="btn-icon" onclick="openDrawer('cart')">
+      <span class="material-symbols-outlined">shopping_bag</span>
+      <span class="cart-badge" id="cartCount">1</span>
+    </button>
   </div>
 </header>
 
-<!-- Hero Section -->
-<section class="hero">
-  <div class="hero-card">
-    <div>
-      <div class="hero-tag">ROYAL FESTIVE '26 COLLECTION</div>
-      <h1 class="hero-title">Timeless Heritage & Regal Luxury for Kids</h1>
-      <p class="hero-desc">
-        Handcrafted Silk Lehenga Cholis, Brocade Kurta Pyjamas, and Little Gentleman Tuxedos designed for grand celebrations.
-      </p>
-      <div class="hero-btns">
+<!-- Hero Showcase Section -->
+<section class="hero-section">
+  <div class="hero-banner">
+    <div class="hero-content">
+      <span class="hero-tag">Royal Festive Collection '26</span>
+      <h1 class="hero-title">Handcrafted Luxury for Little Royalty</h1>
+      <p class="hero-desc">Discover exquisite silk lehengas, hand-embroidered kurta sets, and bespoke children's formal wear designed for timeless celebration.</p>
+      <div class="hero-buttons">
         <a href="#catalog" class="btn-primary">
-          <span>Shop Collection</span>
-          <span class="material-symbols-outlined">arrow_forward</span>
+          Shop Collection
+          <span class="material-symbols-outlined" style="font-size:18px;">arrow_forward</span>
         </a>
-        <button class="btn-secondary" onclick="openDrawerWithPrompt('Generate a visual preview of a Royal Silk Kids Sherwani outfit')">
-          ✨ Try AI Outfit Generator
-        </button>
+        <a href="javascript:void(0)" onclick="openDrawer('stylist')" class="btn-secondary">
+          ✨ Try AI Fit Assistant
+        </a>
       </div>
     </div>
-    <div class="hero-image-wrap">
-      <img src="https://storage.googleapis.com/qwiklabs-gcp-02-eb01df7117c0-kandamma-media/lehenga.jpg" alt="Kandamma Festive Outfit" class="hero-img">
-    </div>
   </div>
 </section>
 
-<!-- Main E-Commerce Product Catalog Section -->
-<section class="catalog-section" id="catalog">
-  <div class="section-header">
-    <div>
-      <h2 class="section-title">Curated Luxury Outfits</h2>
-      <p class="section-subtitle">Select your style, choose size, and checkout directly via WhatsApp Admin or Secured Gateway</p>
+<!-- Filter Section -->
+<div class="category-bar" id="catalog">
+  <h2 class="category-title">Featured Outfits</h2>
+  <div class="filter-pills">
+    <button class="pill active">All</button>
+    <button class="pill">👑 Ethnic & Festive</button>
+    <button class="pill">👔 Formal Tuxedos</button>
+    <button class="pill">✨ Casual</button>
+  </div>
+</div>
+
+<!-- Product Catalog -->
+<main class="catalog-grid">
+  <!-- Card 1 -->
+  <div class="product-card">
+    <div class="card-img-wrap">
+      <span class="card-tag">🔥 Best Seller</span>
+      <img src="https://storage.googleapis.com/qwiklabs-gcp-02-eb01df7117c0-kandamma-media/lehenga.jpg" alt="Festive Silk Lehenga Choli">
+    </div>
+    <div class="card-body">
+      <div class="card-category">Ethnic & Festive</div>
+      <h3 class="card-title">Silk Lehenga Choli & Dupatta</h3>
+      <div class="card-price-row">
+        <span class="card-price">₹4,999</span>
+        <div class="card-rating">
+          <span class="material-symbols-outlined" style="font-size:16px; fill:1;">star</span>
+          4.9 (128)
+        </div>
+      </div>
+      <div class="size-chips">
+        <span class="size-chip">2Y-3Y</span>
+        <span class="size-chip selected">4Y-5Y</span>
+        <span class="size-chip">6Y-7Y</span>
+      </div>
+      <div class="card-actions">
+        <button class="btn-card-buy" onclick="addToCart('KKW-101', 'Silk Lehenga Choli', 4999)">Add to Cart</button>
+        <a href="https://wa.me/919876543210?text=Hi%20Kandamma%20Kids,%20I%20want%20to%20order%20the%20Silk%20Lehenga%20Choli%20(KKW-101)%20for%20₹4999" target="_blank" class="btn-card-wa">
+          <span class="material-symbols-outlined" style="font-size:18px;">chat</span> Order WA
+        </a>
+      </div>
     </div>
   </div>
 
-  <!-- Filter Bar -->
-  <div class="filter-bar">
-    <button class="tab-btn active" onclick="filterCatalog('All', this)">All Outfits</button>
-    <button class="tab-btn" onclick="filterCatalog('Ethnic', this)">👑 Ethnic & Festive</button>
-    <button class="tab-btn" onclick="filterCatalog('Formal', this)">👔 Formal Tuxedos</button>
-    <button class="tab-btn" onclick="filterCatalog('Casual', this)">✨ Casual Wear</button>
+  <!-- Card 2 -->
+  <div class="product-card">
+    <div class="card-img-wrap">
+      <span class="card-tag">Royal Edition</span>
+      <img src="https://storage.googleapis.com/qwiklabs-gcp-02-eb01df7117c0-kandamma-media/kurta.jpg" alt="Royal Brocade Kurta Set">
+    </div>
+    <div class="card-body">
+      <div class="card-category">Festive Kurta</div>
+      <h3 class="card-title">Royal Brocade Kurta Pyjama Set</h3>
+      <div class="card-price-row">
+        <span class="card-price">₹3,499</span>
+        <div class="card-rating">
+          <span class="material-symbols-outlined" style="font-size:16px;">star</span>
+          4.8 (94)
+        </div>
+      </div>
+      <div class="size-chips">
+        <span class="size-chip">2Y</span>
+        <span class="size-chip selected">3Y-4Y</span>
+        <span class="size-chip">5Y-6Y</span>
+      </div>
+      <div class="card-actions">
+        <button class="btn-card-buy" onclick="addToCart('KKW-102', 'Brocade Kurta Set', 3499)">Add to Cart</button>
+        <a href="https://wa.me/919876543210?text=Hi%20Kandamma%20Kids,%20I%20want%20to%20order%20the%20Brocade%20Kurta%20Set%20(KKW-102)%20for%20₹3499" target="_blank" class="btn-card-wa">
+          <span class="material-symbols-outlined" style="font-size:18px;">chat</span> Order WA
+        </a>
+      </div>
+    </div>
   </div>
 
-  <!-- Product Cards Grid -->
-  <div class="products-grid" id="productsGrid">
-    <!-- Populated by JavaScript -->
+  <!-- Card 3 -->
+  <div class="product-card">
+    <div class="card-img-wrap">
+      <span class="card-tag">Formal Couture</span>
+      <img src="https://storage.googleapis.com/qwiklabs-gcp-02-eb01df7117c0-kandamma-media/tuxedo.jpg" alt="Little Gentleman Tuxedo Suit">
+    </div>
+    <div class="card-body">
+      <div class="card-category">Formal Tuxedos</div>
+      <h3 class="card-title">4-Piece Little Gentleman Tuxedo</h3>
+      <div class="card-price-row">
+        <span class="card-price">₹5,299</span>
+        <div class="card-rating">
+          <span class="material-symbols-outlined" style="font-size:16px;">star</span>
+          5.0 (62)
+        </div>
+      </div>
+      <div class="size-chips">
+        <span class="size-chip">3Y</span>
+        <span class="size-chip selected">4Y-5Y</span>
+        <span class="size-chip">6Y-7Y</span>
+      </div>
+      <div class="card-actions">
+        <button class="btn-card-buy" onclick="addToCart('KKW-105', 'Little Gentleman Tuxedo', 5299)">Add to Cart</button>
+        <a href="https://wa.me/919876543210?text=Hi%20Kandamma%20Kids,%20I%20want%20to%20order%20the%204-Piece%20Tuxedo%20(KKW-105)%20for%20₹5299" target="_blank" class="btn-card-wa">
+          <span class="material-symbols-outlined" style="font-size:18px;">chat</span> Order WA
+        </a>
+      </div>
+    </div>
   </div>
-</section>
+</main>
 
-<!-- Slide-out AI Stylist Concierge & Cart Drawer -->
+<!-- Cart / Stylist Drawer -->
 <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
-<div class="drawer" id="drawer">
+<div class="drawer" id="sideDrawer">
   <div class="drawer-header">
-    <div class="drawer-title">
-      <span class="material-symbols-outlined">auto_awesome</span>
-      <span>Kandamma AI Fashion Stylist</span>
-    </div>
-    <button class="close-btn" onclick="closeDrawer()">&times;</button>
+    <h3 class="drawer-title" id="drawerTitle">Shopping Bag</h3>
+    <button class="btn-icon" onclick="closeDrawer()">
+      <span class="material-symbols-outlined">close</span>
+    </button>
   </div>
 
-  <div class="drawer-body" id="drawerLog">
-    <div class="chat-msg agent">
-      <div class="chat-bubble">
-        Hello! I am your <strong>Kandamma AI Concierge</strong>. I can assist with size recommendations, order placement, custom outfit visuals, and WhatsApp admin checkout! 👑
-      </div>
-    </div>
+  <div class="drawer-body" id="drawerContent">
+    <!-- Cart Items or AI Chat -->
   </div>
 
-  <div class="drawer-footer">
-    <form class="drawer-form" id="drawerForm">
-      <input type="text" class="drawer-input" id="drawerInput" placeholder="Ask AI Stylist about size, outfit, or WhatsApp order..." autocomplete="off">
-      <button type="submit" class="drawer-send-btn">Send</button>
-    </form>
+  <div class="drawer-footer" id="drawerFooter">
+    <div class="total-row">
+      <span>Total Amount:</span>
+      <span id="cartTotalAmount">₹4,999</span>
+    </div>
+    <button class="btn-checkout" onclick="checkoutWhatsApp()">
+      <span class="material-symbols-outlined">chat</span>
+      Checkout via WhatsApp
+    </button>
   </div>
 </div>
 
 <!-- Footer -->
 <footer>
-  <div class="footer-inner">
-    <div>
-      <div class="footer-brand">KANDAMMA KIDS WEAR</div>
-      <p style="font-size:0.88rem; margin-top:0.8rem; color:#94a3b8;">
-        The premier luxury e-commerce fashion house for children. Handcrafted festive wear, couture tuxedos, and personalized AI styling.
-      </p>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="footer-brand">KANDAMMA</div>
+      <p>Haute couture and handcrafted festive fashion for babies, toddlers, and young royalty.</p>
     </div>
-    <div>
-      <h4 style="color:#fff; margin-bottom:1rem;">Collections</h4>
-      <p style="font-size:0.85rem; margin-bottom:0.4rem;">Girls Festive Silk Lehengas</p>
-      <p style="font-size:0.85rem; margin-bottom:0.4rem;">Boys Brocade Kurta Sets</p>
-      <p style="font-size:0.85rem;">Formal 4-Piece Tuxedos</p>
+    <div class="footer-col">
+      <h4>Collections</h4>
+      <ul>
+        <li><a href="#">Festive Silk Lehengas</a></li>
+        <li><a href="#">Brocade Kurta Pyjamas</a></li>
+        <li><a href="#">Little Gentleman Tuxedos</a></li>
+        <li><a href="#">Organic Cotton Daily Wear</a></li>
+      </ul>
     </div>
-    <div>
-      <h4 style="color:#fff; margin-bottom:1rem;">Customer Support</h4>
-      <p style="font-size:0.85rem; margin-bottom:0.4rem;">WhatsApp Direct Support</p>
-      <p style="font-size:0.85rem; margin-bottom:0.4rem;">Size & Fit Guide</p>
-      <p style="font-size:0.85rem;">Secured Gateway Checkout</p>
+    <div class="footer-col">
+      <h4>Client Concierge</h4>
+      <ul>
+        <li><a href="#">Size & Fit Assistant</a></li>
+        <li><a href="#">Track Order</a></li>
+        <li><a href="#">Bespoke Custom Fitting</a></li>
+        <li><a href="#">WhatsApp Direct Support</a></li>
+      </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    &copy; 2026 KANDAMMA KIDS WEAR. All Rights Reserved. Powered by Google Cloud Platform & Vertex AI.
+    &copy; 2026 KANDAMMA KIDS WEAR. All Rights Reserved. Crafted with Google Gemini & AI Platform.
   </div>
 </footer>
 
 <script>
-let cartItemsCount = 0;
-const productsData = [
-  {
-    id: "KKW-101",
-    name: "Festive Silk Ethnic Lehenga Choli Set",
-    category: "Ethnic",
-    price: 49.99,
-    sizes: ["2Y", "3Y", "4Y", "5Y", "6Y", "7Y-8Y"],
-    rating: 5,
-    reviews: 48,
-    image: "https://storage.googleapis.com/qwiklabs-gcp-02-eb01df7117c0-kandamma-media/lehenga.jpg",
-    description: "Handcrafted premium silk lehenga choli set with intricate embroidery, perfect for celebrations and festive occasions."
-  },
-  {
-    id: "KKW-102",
-    name: "Dapper Royal Silk Kurta Pyjama with Waistcoat",
-    category: "Ethnic",
-    price: 44.99,
-    sizes: ["2Y", "3Y", "4Y", "5Y", "6Y", "7Y-8Y"],
-    rating: 5,
-    reviews: 32,
-    image: "https://storage.googleapis.com/qwiklabs-gcp-02-eb01df7117c0-kandamma-media/kurta.jpg",
-    description: "Traditional royal silk kurta pyjama styled with a rich brocade waistcoat for little gents."
-  },
-  {
-    id: "KKW-105",
-    name: "Little Gentleman Tuxedo Suit with Bowtie",
-    category: "Formal",
-    price: 54.99,
-    sizes: ["3Y", "4Y", "5Y", "6Y", "7Y"],
-    rating: 5,
-    reviews: 56,
-    image: "https://storage.googleapis.com/qwiklabs-gcp-02-eb01df7117c0-kandamma-media/tuxedo.jpg",
-    description: "Premium 4-piece formal tuxedo suit including blazer, shirt, trousers, and silk bowtie."
-  }
-];
+  let cart = [
+    { id: 'KKW-101', name: 'Silk Lehenga Choli', price: 4999, qty: 1, img: 'https://storage.googleapis.com/qwiklabs-gcp-02-eb01df7117c0-kandamma-media/lehenga.jpg' }
+  ];
 
-function renderCatalog(items) {
-  const grid = document.getElementById("productsGrid");
-  grid.innerHTML = "";
-  items.forEach(p => {
-    const card = document.createElement("div");
-    card.className = "product-card";
-    const stars = "★".repeat(p.rating) + "☆".repeat(5 - p.rating);
-    const sizesHtml = p.sizes.map(s => `<span class="size-chip">${s}</span>`).join("");
+  function openDrawer(type) {
+    document.getElementById('drawerOverlay').classList.add('active');
+    document.getElementById('sideDrawer').classList.add('active');
     
-    // Build WhatsApp order link
-    const waText = encodeURIComponent(`Hello Kandamma Admin! I want to order ${p.name} (${p.id}) priced at $${p.price}. Please share payment confirmation.`);
-    const waLink = `https://wa.me/919876543210?text=${waText}`;
+    if(type === 'cart') {
+      document.getElementById('drawerTitle').innerText = 'Your Shopping Bag';
+      renderCart();
+      document.getElementById('drawerFooter').style.display = 'block';
+    } else {
+      document.getElementById('drawerTitle').innerText = '✨ AI Fashion Stylist';
+      renderStylist();
+      document.getElementById('drawerFooter').style.display = 'none';
+    }
+  }
 
-    card.innerHTML = `
-      <div class="card-img-wrap">
-        <span class="badge-category">${p.category}</span>
-        <img src="${p.image}" alt="${p.name}" class="card-img">
-      </div>
-      <div class="card-body">
-        <div class="rating-stars">${stars} <span style="color:#64748b; font-size:0.78rem; margin-left:0.3rem;">(${p.reviews})</span></div>
-        <h3 class="card-title">${p.name}</h3>
-        <p class="card-desc">${p.description}</p>
-        <div class="size-badges">${sizesHtml}</div>
-        <div class="card-footer">
-          <div class="price">$${p.price.toFixed(2)}</div>
-          <div class="card-btns">
-            <a href="${waLink}" target="_blank" class="btn-whatsapp">
-              <span>📲 Order WhatsApp</span>
-            </a>
-            <button class="btn-cart" onclick="addToCart('${p.id}', '${p.name}', ${p.price})">🛒 Buy</button>
+  function closeDrawer() {
+    document.getElementById('drawerOverlay').classList.remove('active');
+    document.getElementById('sideDrawer').classList.remove('active');
+  }
+
+  function addToCart(id, name, price) {
+    cart.push({ id, name, price, qty: 1, img: 'https://storage.googleapis.com/qwiklabs-gcp-02-eb01df7117c0-kandamma-media/lehenga.jpg' });
+    document.getElementById('cartCount').innerText = cart.length;
+    openDrawer('cart');
+  }
+
+  function renderCart() {
+    let total = 0;
+    let html = '';
+    cart.forEach((item, idx) => {
+      total += item.price * item.qty;
+      html += `
+        <div class="cart-item">
+          <img src="${item.img}" alt="${item.name}">
+          <div class="cart-item-info">
+            <div class="cart-item-title">${item.name}</div>
+            <div class="cart-item-meta">Size: 4Y-5Y • Qty: ${item.qty}</div>
+            <div class="cart-item-price">₹${item.price.toLocaleString()}</div>
           </div>
+          <button class="btn-icon" onclick="removeItem(${idx})">
+            <span class="material-symbols-outlined" style="font-size:18px;">delete</span>
+          </button>
         </div>
+      `;
+    });
+    document.getElementById('drawerContent').innerHTML = html || '<p>Your shopping bag is empty.</p>';
+    document.getElementById('cartTotalAmount').innerText = '₹' + total.toLocaleString();
+  }
+
+  function removeItem(idx) {
+    cart.splice(idx, 1);
+    document.getElementById('cartCount').innerText = cart.length;
+    renderCart();
+  }
+
+  function renderStylist() {
+    document.getElementById('drawerContent').innerHTML = `
+      <div class="chat-box">
+        <div class="msg bot">Namaste! 👋 I'm your Kandamma AI Stylist. How can I help you find the perfect outfit for your child today?</div>
+        <div class="msg user">I need a silk lehenga for my 4-year-old daughter for a wedding ceremony next week.</div>
+        <div class="msg bot">Wonderful! I recommend our <b>Silk Lehenga Choli & Dupatta (KKW-101)</b> in Size 4Y-5Y. It is crafted from 100% pure Mulberry silk with soft cotton lining so it's gentle on delicate skin! Would you like me to reserve it for you?</div>
       </div>
     `;
-    grid.appendChild(card);
-  });
-}
-
-function filterCatalog(cat, btnEl) {
-  if (btnEl) {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    btnEl.classList.add('active');
   }
-  if (cat === 'All') renderCatalog(productsData);
-  else renderCatalog(productsData.filter(p => p.category === cat));
-}
 
-function addToCart(id, name, price) {
-  cartItemsCount++;
-  document.getElementById("cartCount").textContent = cartItemsCount;
-  openDrawerWithPrompt(`I want to order ${id} for customer Priya (+919876543210)`);
-}
-
-function openDrawer() {
-  document.getElementById("drawerOverlay").classList.add("active");
-  document.getElementById("drawer").classList.add("active");
-}
-
-function closeDrawer() {
-  document.getElementById("drawerOverlay").classList.remove("active");
-  document.getElementById("drawer").classList.remove("active");
-}
-
-function openDrawerWithPrompt(promptText) {
-  openDrawer();
-  const input = document.getElementById("drawerInput");
-  input.value = promptText;
-  document.getElementById("drawerForm").dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
-}
-
-// Drawer Chat Submit
-document.getElementById("drawerForm").addEventListener("submit", async (ev) => {
-  ev.preventDefault();
-  const input = document.getElementById("drawerInput");
-  const text = input.value.trim();
-  if (!text) return;
-
-  const log = document.getElementById("drawerLog");
-  
-  // User bubble
-  const userMsg = document.createElement("div");
-  userMsg.className = "chat-msg user";
-  userMsg.innerHTML = `<div class="chat-bubble">${text}</div>`;
-  log.appendChild(userMsg);
-  input.value = "";
-
-  // Agent bubble thinking
-  const agentMsg = document.createElement("div");
-  agentMsg.className = "chat-msg agent";
-  const agentBubble = document.createElement("div");
-  agentBubble.className = "chat-bubble";
-  agentBubble.textContent = "Connecting to Kandamma AI Stylist Concierge...";
-  agentMsg.appendChild(agentBubble);
-  log.appendChild(agentMsg);
-  log.scrollTop = log.scrollHeight;
-
-  try {
-    const res = await fetch("/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ message: text }) });
-    const data = await res.json();
-    
-    // Parse response
-    const parts = data.parts || [];
-    let txt = parts.map(p => p.text || "").join("\n").trim();
-    if (!txt) txt = "Item added to cart! Ready for WhatsApp Checkout.";
-
-    // Render WhatsApp and payment buttons nicely
-    txt = txt.replace(/(https:\/\/wa\.me\/[^\s]+)/g, '<br><a href="$1" target="_blank" style="display:inline-block; margin-top:8px; background:#25d366; color:#fff; padding:6px 14px; border-radius:20px; text-decoration:none; font-weight:700;">📲 Complete Order via WhatsApp Admin</a>');
-    txt = txt.replace(/(https:\/\/checkout\.kandammakidswear\.com\/[^\s]+)/g, '<br><a href="$1" target="_blank" style="display:inline-block; margin-top:8px; background:#6366f1; color:#fff; padding:6px 14px; border-radius:20px; text-decoration:none; font-weight:700;">💳 Proceed to Secured Checkout</a>');
-    txt = txt.replace(/(https:\/\/storage\.googleapis\.com\/[^\s]+\.(jpg|jpeg|png))/gi, '<div style="margin-top:8px"><img src="$1" style="max-width:100%; border-radius:10px;"></div>');
-
-    agentBubble.innerHTML = txt;
-  } catch (e) {
-    agentBubble.textContent = "Order update processed! You can click Order via WhatsApp on any product card.";
+  function checkoutWhatsApp() {
+    let text = "Hi Kandamma Kids! I would like to place an order for:\n";
+    cart.forEach(i => {
+      text += `- ${i.name} (${i.id}): ₹${i.price}\n`;
+    });
+    window.open("https://wa.me/919876543210?text=" + encodeURIComponent(text), "_blank");
   }
-  log.scrollTop = log.scrollHeight;
-});
-
-// Initial catalog render
-renderCatalog(productsData);
 </script>
 </body>
 </html>
